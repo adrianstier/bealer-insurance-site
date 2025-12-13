@@ -7,8 +7,8 @@ interface Props {
 
 const {
   insuranceType = "",
-  heading = "Get Your Free Quote in 60 Seconds",
-  subheading = "See how much you could save with a local 805 agent"
+  heading = "See Your Rate in 60 Seconds",
+  subheading = "Quick form - no commitment required"
 } = Astro.props;
 
 const insuranceOptions = [
@@ -17,105 +17,89 @@ const insuranceOptions = [
   { value: "renters", label: "Renters Insurance" },
   { value: "business", label: "Business Insurance" },
   { value: "life", label: "Life Insurance" },
-  { value: "other", label: "Other" },
+  { value: "bundle", label: "Bundle (Home + Auto)" },
+  { value: "unsure", label: "Not sure - Help me decide" },
 ];
 ---
 
 <section id="quote-form" class="py-16 bg-gradient-to-b from-gray-50 to-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-      <!-- Header with urgency -->
-      <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-6 text-white">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-bold mb-1">{heading}</h2>
-            <p class="text-blue-100">{subheading}</p>
-          </div>
-          <div class="flex items-center gap-2 bg-white/20 rounded-lg px-4 py-2">
-            <svg class="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-sm font-medium">100% Free - No Obligation</span>
-          </div>
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-5 text-white">
+        <div class="text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-1">{heading}</h2>
+          <p class="text-blue-100 text-sm">{subheading}</p>
         </div>
       </div>
 
-      <div class="p-8 md:p-10">
-        <!-- Trust indicators above form -->
-        <div class="flex flex-wrap justify-center gap-6 mb-8 pb-8 border-b border-gray-100">
-          <div class="flex items-center gap-2 text-sm text-gray-600">
-            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+      <div class="p-6 md:p-8">
+        <!-- Compact trust bar -->
+        <div class="flex justify-center gap-6 mb-6 pb-6 border-b border-gray-100">
+          <div class="flex items-center gap-1.5 text-xs text-gray-500">
+            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
             </svg>
-            <span>Your info is secure</span>
+            <span>Secure</span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-gray-600">
-            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex items-center gap-1.5 text-xs text-gray-500">
+            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
             </svg>
-            <span>Response within 24hrs</span>
+            <span>Response in hours</span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-gray-600">
-            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex items-center gap-1.5 text-xs text-gray-500">
+            <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
-            <span>4.9 star rated agents</span>
+            <span>4.9 rated</span>
           </div>
         </div>
 
-        <form id="lead-form" class="space-y-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">
-                First Name <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                required
-                autocomplete="given-name"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="John"
-              />
-            </div>
+        <!-- Step 1: Core Fields -->
+        <form id="lead-form" class="space-y-5">
+          <div id="step-1">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="insuranceType" class="block text-sm font-medium text-gray-700 mb-1">
+                  What do you need? <span class="text-red-500">*</span>
+                </label>
+                <select
+                  id="insuranceType"
+                  name="insuranceType"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white text-base"
+                >
+                  <option value="">Select insurance type</option>
+                  {insuranceOptions.map((option) => (
+                    <option value={option.value} selected={insuranceType === option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div>
-              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">
-                Last Name <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                required
-                autocomplete="family-name"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="Smith"
-              />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-                Email <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                autocomplete="email"
-                inputmode="email"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="john@example.com"
-              />
+              <div>
+                <label for="zipCode" class="block text-sm font-medium text-gray-700 mb-1">
+                  ZIP Code <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="zipCode"
+                  name="zipCode"
+                  required
+                  pattern="[0-9]{5}"
+                  inputmode="numeric"
+                  maxlength="5"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base"
+                  placeholder="93117"
+                />
+              </div>
             </div>
 
             <div>
               <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
-                Phone <span class="text-red-500">*</span>
+                Phone Number <span class="text-red-500">*</span>
               </label>
               <input
                 type="tel"
@@ -124,46 +108,61 @@ const insuranceOptions = [
                 required
                 autocomplete="tel"
                 inputmode="tel"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base"
                 placeholder="(805) 555-0123"
               />
+              <p class="text-xs text-gray-400 mt-1">We'll text or call with your personalized rate</p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label for="insuranceType" class="block text-sm font-medium text-gray-700 mb-1">
-                Insurance Type <span class="text-red-500">*</span>
-              </label>
-              <select
-                id="insuranceType"
-                name="insuranceType"
-                required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white"
-              >
-                <option value="">What do you need?</option>
-                {insuranceOptions.map((option) => (
-                  <option value={option.value} selected={insuranceType === option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+          <!-- Step 2: Additional Details (shown after step 1 interaction) -->
+          <div id="step-2" class="hidden space-y-4 pt-4 border-t border-gray-100">
+            <p class="text-sm text-gray-600 font-medium">Almost done! Who should we contact?</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">
+                  First Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  autocomplete="given-name"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  placeholder="John"
+                />
+              </div>
+
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">
+                  Last Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  autocomplete="family-name"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  placeholder="Smith"
+                />
+              </div>
             </div>
 
             <div>
-              <label for="zipCode" class="block text-sm font-medium text-gray-700 mb-1">
-                Zip Code <span class="text-red-500">*</span>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                Email <span class="text-gray-400 text-xs font-normal">(optional)</span>
               </label>
               <input
-                type="text"
-                id="zipCode"
-                name="zipCode"
-                required
-                pattern="[0-9]{5}"
-                inputmode="numeric"
-                maxlength="5"
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                inputmode="email"
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="93117"
+                placeholder="john@example.com"
               />
             </div>
           </div>
@@ -173,50 +172,62 @@ const insuranceOptions = [
             id="submit-btn"
             class="w-full bg-orange-500 text-white py-4 px-6 rounded-lg text-lg font-bold hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
-            <span class="flex items-center justify-center gap-2">
-              Get My Free Quotes
+            <span id="btn-text" class="flex items-center justify-center gap-2">
+              See My Rate
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
           </button>
 
-          <div class="flex items-center justify-center gap-4 pt-4">
-            <div class="flex -space-x-2">
-              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xs font-bold border-2 border-white">M</div>
-              <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xs font-bold border-2 border-white">K</div>
-              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 text-xs font-bold border-2 border-white">S</div>
-              <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xs font-bold border-2 border-white">J</div>
-            </div>
-            <p class="text-sm text-gray-600">
-              <span class="font-semibold text-gray-900">127 people</span> requested quotes this week
-            </p>
-          </div>
-
-          <p class="text-xs text-gray-500 text-center">
-            By submitting, you agree to our
-            <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.
-            We connect you with licensed local agents. No spam, ever.
+          <p class="text-xs text-gray-400 text-center">
+            By submitting, you agree to our <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.
+            No spam, ever.
           </p>
         </form>
 
-        <div id="success-message" class="hidden text-center py-8">
-          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Success State -->
+        <div id="success-message" class="hidden text-center py-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">You're All Set!</h3>
-          <p class="text-gray-600 mb-6 max-w-md mx-auto">
-            A local Goleta insurance professional will reach out within 24 hours with personalized quotes.
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">You're All Set!</h3>
+          <p class="text-gray-600 mb-6">
+            A local agent will reach out shortly with your personalized rate.
           </p>
-          <div class="bg-blue-50 rounded-lg p-4 max-w-md mx-auto">
-            <p class="text-sm text-blue-800">
-              <strong>What happens next?</strong> Your agent will call or email to discuss your needs and provide competitive quotes from multiple carriers.
-            </p>
+
+          <div class="bg-blue-50 rounded-xl p-5 text-left space-y-3">
+            <p class="font-semibold text-blue-900 text-sm">What happens next:</p>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-blue-600 font-bold text-xs">1</span>
+              </div>
+              <p class="text-sm text-blue-800">
+                <strong>Check your phone</strong> — we often call within 1-2 hours during business hours (M-F 9am-6pm)
+              </p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-blue-600 font-bold text-xs">2</span>
+              </div>
+              <p class="text-sm text-blue-800">
+                <strong>Save this number:</strong> <span class="font-mono bg-blue-100 px-2 py-0.5 rounded">(805) 845-7005</span> so you don't miss our call
+              </p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-blue-600 font-bold text-xs">3</span>
+              </div>
+              <p class="text-sm text-blue-800">
+                <strong>Have your current policy handy</strong> if you have one — helps us find you the best rate
+              </p>
+            </div>
           </div>
         </div>
 
+        <!-- Error State -->
         <div id="error-message" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 mt-4">
           <div class="flex items-center gap-2 text-red-800">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -233,9 +244,13 @@ const insuranceOptions = [
 <script>
   const form = document.getElementById('lead-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text');
   const successMessage = document.getElementById('success-message');
   const errorMessage = document.getElementById('error-message');
+  const step1 = document.getElementById('step-1');
+  const step2 = document.getElementById('step-2');
 
+  // Phone formatting
   const phoneInput = document.getElementById('phone') as HTMLInputElement;
   phoneInput?.addEventListener('input', (e) => {
     const target = e.target as HTMLInputElement;
@@ -248,17 +263,54 @@ const insuranceOptions = [
     target.value = value;
   });
 
+  // Progressive disclosure: show step 2 when phone is filled
+  phoneInput?.addEventListener('blur', () => {
+    if (phoneInput.value.length >= 10) {
+      step2?.classList.remove('hidden');
+      if (btnText) {
+        btnText.innerHTML = `
+          Get My Rate
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        `;
+      }
+    }
+  });
+
+  // Pre-fill ZIP from session storage (from hero form)
+  const savedZip = sessionStorage.getItem('userZipCode');
+  if (savedZip) {
+    const zipInput = document.getElementById('zipCode') as HTMLInputElement;
+    if (zipInput && !zipInput.value) {
+      zipInput.value = savedZip;
+    }
+  }
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Make sure step 2 fields are visible and filled
+    const firstNameInput = document.getElementById('firstName') as HTMLInputElement;
+    const lastNameInput = document.getElementById('lastName') as HTMLInputElement;
+
+    if (!firstNameInput?.value || !lastNameInput?.value) {
+      step2?.classList.remove('hidden');
+      firstNameInput?.focus();
+      return;
+    }
+
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Finding Your Best Rates...</span>';
+    if (btnText) {
+      btnText.innerHTML = '<svg class="animate-spin w-5 h-5 mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+    }
     errorMessage?.classList.add('hidden');
 
     const formData = new FormData(form);
     const data = {
       firstName: formData.get('firstName'),
       lastName: formData.get('lastName'),
-      email: formData.get('email'),
+      email: formData.get('email') || '',
       phone: formData.get('phone'),
       insuranceType: formData.get('insuranceType'),
       zipCode: formData.get('zipCode'),
@@ -285,11 +337,21 @@ const insuranceOptions = [
 
       form.classList.add('hidden');
       successMessage?.classList.remove('hidden');
+
+      // Clear session storage
+      sessionStorage.removeItem('userZipCode');
     } catch (error) {
       console.error('Form submission error:', error);
       errorMessage?.classList.remove('hidden');
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span class="flex items-center justify-center gap-2">Get My Free Quotes<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>';
+      if (btnText) {
+        btnText.innerHTML = `
+          Get My Rate
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        `;
+      }
     }
   });
 </script>

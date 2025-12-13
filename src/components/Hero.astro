@@ -1,108 +1,86 @@
 ---
 interface Props {
-  title: string;
-  subtitle: string;
-  ctaText?: string;
-  ctaLink?: string;
-  showSavingsBadge?: boolean;
+  title?: string;
+  subtitle?: string;
 }
 
 const {
-  title,
-  subtitle,
-  ctaText = "Get Your Free Quote",
-  ctaLink = "#quote-form",
-  showSavingsBadge = true
+  title = "Stop Overpaying for Insurance",
+  subtitle = "Compare rates from 20+ carriers in 2 minutes. Santa Barbara County residents save an average of $547/year."
 } = Astro.props;
 ---
 
-<section class="relative bg-gradient-to-br from-blue-900 to-blue-700 text-white overflow-hidden">
-  <!-- Background Pattern -->
+<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden">
+  <!-- Subtle Background Pattern -->
   <div class="absolute inset-0 opacity-10">
     <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.4\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Left Column - Text -->
-      <div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+      <!-- Left Column - Value Proposition -->
+      <div class="text-center lg:text-left">
         <!-- Urgency Badge -->
-        {showSavingsBadge && (
-          <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/30 rounded-full px-4 py-2 mb-6">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-            </span>
-            <span class="text-sm font-medium text-green-300">California residents save an average of $547/year</span>
-          </div>
-        )}
+        <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/30 rounded-full px-4 py-2 mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+          </span>
+          <span class="text-sm font-medium text-green-300">December rates available — compare before year-end</span>
+        </div>
 
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
           {title}
         </h1>
-        <p class="text-xl md:text-2xl text-blue-100 mb-8">
+        <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-xl mx-auto lg:mx-0">
           {subtitle}
         </p>
 
-        <!-- Inline Quick Form - Higher Conversion -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/20">
-          <form id="hero-quick-form" class="flex flex-col sm:flex-row gap-3">
-            <input
-              type="text"
-              name="zipCode"
-              required
-              pattern="[0-9]{5}"
-              inputmode="numeric"
-              maxlength="5"
-              placeholder="Enter ZIP Code"
-              class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-orange-500 border-0"
-            />
+        <!-- Giant ZIP Input - The Single CTA -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 max-w-md mx-auto lg:mx-0 mb-8">
+          <form id="hero-zip-form" class="space-y-4">
+            <div>
+              <label for="hero-zip" class="block text-sm font-medium text-blue-100 mb-2 text-left">
+                Enter your ZIP to start comparing rates
+              </label>
+              <input
+                type="text"
+                id="hero-zip"
+                name="zipCode"
+                required
+                pattern="[0-9]{5}"
+                inputmode="numeric"
+                maxlength="5"
+                placeholder="Enter ZIP Code"
+                class="w-full px-5 py-4 text-xl text-center text-gray-900 placeholder-gray-400 rounded-xl border-0 focus:ring-4 focus:ring-orange-400 transition-all"
+              />
+            </div>
             <button
               type="submit"
-              class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-lg hover:shadow-xl whitespace-nowrap flex items-center justify-center gap-2"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
             >
-              <span>See My Rates</span>
+              <span>Start My Quote</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </button>
           </form>
-          <p class="text-blue-200 text-xs mt-2 text-center sm:text-left">
-            <span class="inline-flex items-center gap-1">
-              <svg class="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-              </svg>
-              Secure & confidential - takes 60 seconds
-            </span>
+          <p class="text-blue-200 text-xs mt-3 flex items-center justify-center gap-1">
+            <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+            100% secure. No spam. Takes 2 minutes.
           </p>
         </div>
 
-        <!-- Secondary CTA -->
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-          <a
-            href={ctaLink}
-            class="inline-flex items-center justify-center bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-medium transition-all border border-white/30"
-          >
-            Or fill out detailed form below
-            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-blue-200">
+        <!-- Trust Signals Row -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm text-blue-200">
           <div class="flex items-center gap-2">
             <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
-            <span>100% Free, No Obligation</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Compare 20+ Carriers</span>
+            <span>20+ Carriers</span>
           </div>
           <div class="flex items-center gap-2">
             <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -110,109 +88,149 @@ const {
             </svg>
             <span>Licensed CA Agents</span>
           </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>No Obligation</span>
+          </div>
         </div>
       </div>
 
-      <!-- Right Column - Quick Stats / Social Proof -->
+      <!-- Right Column - Social Proof & Recent Savings -->
       <div class="hidden lg:block">
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+          <!-- Recent Savings Ticker -->
           <div class="text-center mb-6">
-            <div class="text-5xl font-bold text-white mb-2">2,847</div>
-            <div class="text-blue-200">805 families helped this year</div>
+            <p class="text-blue-200 text-sm uppercase tracking-wide mb-2">Recent Savings in Your Area</p>
+            <div class="text-4xl font-bold text-white">$547<span class="text-xl text-blue-200">/year avg.</span></div>
           </div>
 
-          <div class="space-y-4">
-            <!-- Recent Activity (Social Proof) -->
-            <div class="bg-white/10 rounded-lg p-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
-                  <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <div class="text-white font-medium">Maria S. from Goleta</div>
-                  <div class="text-blue-200 text-sm">Saved $720/yr on auto insurance</div>
-                </div>
+          <!-- Live Activity Feed -->
+          <div class="space-y-3 mb-6">
+            <div class="bg-white/10 rounded-lg p-4 flex items-center gap-3 animate-fade-in">
+              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
               </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">Maria S. • Goleta</div>
+                <div class="text-green-400 text-sm font-semibold">Saved $720/yr on auto</div>
+              </div>
+              <div class="text-blue-300 text-xs">2 hrs ago</div>
             </div>
 
-            <div class="bg-white/10 rounded-lg p-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
-                  <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <div class="text-white font-medium">Kevin T. from Santa Barbara</div>
-                  <div class="text-blue-200 text-sm">Found home + auto bundle, saved $1,200/yr</div>
-                </div>
+            <div class="bg-white/10 rounded-lg p-4 flex items-center gap-3">
+              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
               </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">Kevin T. • Santa Barbara</div>
+                <div class="text-green-400 text-sm font-semibold">Saved $1,200/yr on bundle</div>
+              </div>
+              <div class="text-blue-300 text-xs">5 hrs ago</div>
             </div>
 
-            <div class="bg-white/10 rounded-lg p-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
-                  <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <div class="text-white font-medium">UCSB Student</div>
-                  <div class="text-blue-200 text-sm">Got renters insurance for just $15/mo</div>
-                </div>
+            <div class="bg-white/10 rounded-lg p-4 flex items-center gap-3">
+              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
               </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">UCSB Student • Isla Vista</div>
+                <div class="text-green-400 text-sm font-semibold">Found renters for $12/mo</div>
+              </div>
+              <div class="text-blue-300 text-xs">Today</div>
             </div>
           </div>
 
-          <div class="mt-6 text-center">
-            <div class="inline-flex items-center gap-1 text-yellow-400">
+          <!-- Star Rating -->
+          <div class="text-center pt-4 border-t border-white/10">
+            <div class="flex items-center justify-center gap-1 text-yellow-400 mb-1">
               {[1,2,3,4,5].map(() => (
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               ))}
             </div>
-            <div class="text-blue-200 text-sm mt-1">4.9/5 from 500+ reviews</div>
+            <div class="text-blue-200 text-sm">4.9/5 from 500+ reviews</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile Social Proof (visible on small screens) -->
+    <div class="lg:hidden mt-8 flex items-center justify-center gap-4 bg-white/10 rounded-xl p-4">
+      <div class="text-center">
+        <div class="text-2xl font-bold text-white">$547</div>
+        <div class="text-xs text-blue-200">Avg. savings</div>
+      </div>
+      <div class="w-px h-10 bg-white/20"></div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-white">20+</div>
+        <div class="text-xs text-blue-200">Carriers</div>
+      </div>
+      <div class="w-px h-10 bg-white/20"></div>
+      <div class="text-center">
+        <div class="flex items-center justify-center gap-0.5 text-yellow-400">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          <span class="text-white font-bold">4.9</span>
+        </div>
+        <div class="text-xs text-blue-200">Rating</div>
       </div>
     </div>
   </div>
 </section>
 
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+</style>
+
 <script>
-  const heroForm = document.getElementById('hero-quick-form') as HTMLFormElement;
+  const heroForm = document.getElementById('hero-zip-form') as HTMLFormElement;
 
   heroForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(heroForm);
-    const zipCode = formData.get('zipCode');
+    const zipCode = formData.get('zipCode') as string;
 
-    // Store zip code for the main form
-    sessionStorage.setItem('userZipCode', zipCode as string);
+    if (!zipCode || zipCode.length !== 5) {
+      alert('Please enter a valid 5-digit ZIP code');
+      return;
+    }
 
-    // Scroll to main form and pre-fill
+    // Store zip code for the form
+    sessionStorage.setItem('userZipCode', zipCode);
+
+    // Scroll to main form
     const mainForm = document.getElementById('quote-form');
     if (mainForm) {
       mainForm.scrollIntoView({ behavior: 'smooth' });
 
-      // Pre-fill the zip code in the main form
+      // Pre-fill the zip code and move to step 2 after a moment
       setTimeout(() => {
         const zipInput = document.getElementById('zipCode') as HTMLInputElement;
         if (zipInput) {
-          zipInput.value = zipCode as string;
-          // Focus on first name to continue the flow
-          const firstNameInput = document.getElementById('firstName') as HTMLInputElement;
-          firstNameInput?.focus();
+          zipInput.value = zipCode;
+          // Trigger the next step
+          document.getElementById('next-1')?.click();
         }
-      }, 500);
+      }, 600);
     }
 
     // Track event
     if (typeof gtag !== 'undefined') {
-      gtag('event', 'hero_form_start', {
+      gtag('event', 'hero_zip_submit', {
         'event_category': 'engagement',
         'event_label': zipCode
       });

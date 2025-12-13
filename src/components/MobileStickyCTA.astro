@@ -1,41 +1,68 @@
 ---
-// Mobile sticky CTA bar - shows on scroll
+// Mobile sticky footer with dual CTA: Quote form + Call now
+// Critical for mobile conversions (70% of insurance traffic is mobile)
 ---
 
-<div id="mobile-sticky-cta" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg transform translate-y-full transition-transform duration-300 z-50 md:hidden">
+<div id="mobile-sticky-cta" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl transform translate-y-full transition-transform duration-300 z-50 md:hidden safe-area-bottom">
   <div class="px-4 py-3">
-    <div class="flex items-center justify-between gap-4">
-      <div class="flex-1">
-        <p class="text-sm font-semibold text-gray-900">Save up to $547/year</p>
-        <p class="text-xs text-gray-500">Free quotes in 60 seconds</p>
-      </div>
+    <div class="flex items-center gap-3">
+      <!-- Primary: Get Quote -->
       <a
         href="#quote-form"
-        class="flex-shrink-0 bg-orange-500 text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors shadow-md"
+        class="flex-1 bg-orange-500 text-white px-4 py-3 rounded-xl font-bold text-center hover:bg-orange-600 transition-colors shadow-lg flex items-center justify-center gap-2"
       >
-        Get Quote
+        <span>Get My Rate</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+
+      <!-- Secondary: Call Now (Speed to Lead) -->
+      <a
+        href="tel:+18058457005"
+        class="flex-shrink-0 bg-green-600 text-white p-3 rounded-xl hover:bg-green-700 transition-colors shadow-lg"
+        aria-label="Call now"
+      >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+        </svg>
       </a>
     </div>
+
+    <!-- Microcopy -->
+    <p class="text-xs text-gray-500 text-center mt-2">
+      <span class="inline-flex items-center gap-1">
+        <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+        </svg>
+        Free quote in 2 min • No spam
+      </span>
+    </p>
   </div>
 </div>
+
+<style>
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+</style>
 
 <script>
   const stickyCta = document.getElementById('mobile-sticky-cta');
   const quoteForm = document.getElementById('quote-form');
-  let lastScrollY = 0;
   let ticking = false;
 
   function updateStickyCta() {
     const scrollY = window.scrollY;
     const viewportHeight = window.innerHeight;
-    
-    // Show after scrolling past first viewport
-    if (scrollY > viewportHeight * 0.5) {
+
+    // Show after scrolling past 40% of viewport
+    if (scrollY > viewportHeight * 0.4) {
       // Check if quote form is in view
       if (quoteForm) {
         const formRect = quoteForm.getBoundingClientRect();
-        const formInView = formRect.top < viewportHeight && formRect.bottom > 0;
-        
+        const formInView = formRect.top < viewportHeight && formRect.bottom > 100;
+
         if (formInView) {
           stickyCta?.classList.add('translate-y-full');
         } else {
@@ -47,8 +74,7 @@
     } else {
       stickyCta?.classList.add('translate-y-full');
     }
-    
-    lastScrollY = scrollY;
+
     ticking = false;
   }
 
@@ -56,6 +82,16 @@
     if (!ticking) {
       requestAnimationFrame(updateStickyCta);
       ticking = true;
+    }
+  });
+
+  // Track call clicks
+  document.querySelector('#mobile-sticky-cta a[href^="tel:"]')?.addEventListener('click', () => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'click_to_call', {
+        'event_category': 'engagement',
+        'event_label': 'mobile_sticky_cta'
+      });
     }
   });
 </script>

@@ -1,0 +1,612 @@
+---
+// Multi-Step Lead Capture Funnel
+// Based on micro-commitment psychology - users invest time before giving contact info
+interface Props {
+  insuranceType?: string;
+}
+
+const { insuranceType = "" } = Astro.props;
+---
+
+<section id="quote-form" class="py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white">
+  <div class="max-w-xl mx-auto px-4">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+
+      <!-- Progress Bar -->
+      <div class="bg-gray-100 h-2">
+        <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 transition-all duration-500 ease-out" style="width: 25%"></div>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="px-6 pt-4 pb-2">
+        <p id="step-indicator" class="text-sm text-gray-500 text-center">Step <span id="current-step">1</span> of 4</p>
+      </div>
+
+      <div class="p-6 md:p-8">
+        <form id="multi-step-form">
+
+          <!-- STEP 1: Low-friction entry (ZIP Code) -->
+          <div id="step-1" class="step-content">
+            <div class="text-center mb-6">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                Let's Find Your Best Rate
+              </h2>
+              <p class="text-gray-600">Enter your ZIP to see carriers in your area</p>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label for="zipCode" class="block text-sm font-medium text-gray-700 mb-2">
+                  Your ZIP Code
+                </label>
+                <input
+                  type="text"
+                  id="zipCode"
+                  name="zipCode"
+                  required
+                  pattern="[0-9]{5}"
+                  inputmode="numeric"
+                  maxlength="5"
+                  class="w-full px-5 py-4 text-xl text-center border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  placeholder="93117"
+                  autocomplete="postal-code"
+                />
+              </div>
+
+              <button
+                type="button"
+                id="next-1"
+                class="w-full bg-orange-500 text-white py-4 px-6 rounded-xl text-lg font-bold hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              >
+                <span>See Carriers in My Area</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+
+            <p class="text-xs text-gray-400 text-center mt-4 flex items-center justify-center gap-1">
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+              Your data is encrypted and secure
+            </p>
+          </div>
+
+          <!-- STEP 2: Insurance Type -->
+          <div id="step-2" class="step-content hidden">
+            <div class="text-center mb-6">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                What Are You Looking to Insure?
+              </h2>
+              <p class="text-gray-600">Select all that apply to get bundled savings</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <label class="insurance-option cursor-pointer">
+                <input type="checkbox" name="insuranceTypes" value="auto" class="sr-only peer" />
+                <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
+                  <div class="text-3xl mb-2">🚗</div>
+                  <div class="font-semibold text-gray-900">Auto</div>
+                  <div class="text-xs text-gray-500">Car, Truck, SUV</div>
+                </div>
+              </label>
+
+              <label class="insurance-option cursor-pointer">
+                <input type="checkbox" name="insuranceTypes" value="home" class="sr-only peer" />
+                <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
+                  <div class="text-3xl mb-2">🏠</div>
+                  <div class="font-semibold text-gray-900">Home</div>
+                  <div class="text-xs text-gray-500">Homeowners</div>
+                </div>
+              </label>
+
+              <label class="insurance-option cursor-pointer">
+                <input type="checkbox" name="insuranceTypes" value="renters" class="sr-only peer" />
+                <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
+                  <div class="text-3xl mb-2">🔑</div>
+                  <div class="font-semibold text-gray-900">Renters</div>
+                  <div class="text-xs text-gray-500">Apartments</div>
+                </div>
+              </label>
+
+              <label class="insurance-option cursor-pointer">
+                <input type="checkbox" name="insuranceTypes" value="life" class="sr-only peer" />
+                <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
+                  <div class="text-3xl mb-2">❤️</div>
+                  <div class="font-semibold text-gray-900">Life</div>
+                  <div class="text-xs text-gray-500">Term & Whole</div>
+                </div>
+              </label>
+
+              <label class="insurance-option cursor-pointer">
+                <input type="checkbox" name="insuranceTypes" value="business" class="sr-only peer" />
+                <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
+                  <div class="text-3xl mb-2">🏢</div>
+                  <div class="font-semibold text-gray-900">Business</div>
+                  <div class="text-xs text-gray-500">Commercial</div>
+                </div>
+              </label>
+
+              <label class="insurance-option cursor-pointer">
+                <input type="checkbox" name="insuranceTypes" value="other" class="sr-only peer" />
+                <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
+                  <div class="text-3xl mb-2">📦</div>
+                  <div class="font-semibold text-gray-900">Other</div>
+                  <div class="text-xs text-gray-500">Boat, RV, etc.</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="flex gap-3">
+              <button
+                type="button"
+                id="back-2"
+                class="px-6 py-4 border-2 border-gray-300 rounded-xl text-gray-600 font-medium hover:bg-gray-50 transition-all"
+              >
+                ← Back
+              </button>
+              <button
+                type="button"
+                id="next-2"
+                class="flex-1 bg-orange-500 text-white py-4 px-6 rounded-xl text-lg font-bold hover:bg-orange-600 transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                <span>Continue</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Quick Details -->
+          <div id="step-3" class="step-content hidden">
+            <div class="text-center mb-6">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                Almost There!
+              </h2>
+              <p class="text-gray-600">A few quick details to personalize your rates</p>
+            </div>
+
+            <div class="space-y-4 mb-6">
+              <div>
+                <label for="currentlyInsured" class="block text-sm font-medium text-gray-700 mb-2">
+                  Currently insured?
+                </label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="currentlyInsured" value="yes" class="sr-only peer" />
+                    <div class="p-3 border-2 border-gray-200 rounded-lg text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300 font-medium">
+                      Yes
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="currentlyInsured" value="no" class="sr-only peer" />
+                    <div class="p-3 border-2 border-gray-200 rounded-lg text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300 font-medium">
+                      No
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label for="homeowner" class="block text-sm font-medium text-gray-700 mb-2">
+                  Do you own or rent your home?
+                </label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="homeowner" value="own" class="sr-only peer" />
+                    <div class="p-3 border-2 border-gray-200 rounded-lg text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300 font-medium">
+                      Own
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="homeowner" value="rent" class="sr-only peer" />
+                    <div class="p-3 border-2 border-gray-200 rounded-lg text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300 font-medium">
+                      Rent
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-3">
+              <button
+                type="button"
+                id="back-3"
+                class="px-6 py-4 border-2 border-gray-300 rounded-xl text-gray-600 font-medium hover:bg-gray-50 transition-all"
+              >
+                ← Back
+              </button>
+              <button
+                type="button"
+                id="next-3"
+                class="flex-1 bg-orange-500 text-white py-4 px-6 rounded-xl text-lg font-bold hover:bg-orange-600 transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                <span>See My Savings</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Contact Info (The Payoff) -->
+          <div id="step-4" class="step-content hidden">
+            <div class="text-center mb-6">
+              <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                Great news! We found carriers in your area
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                Where Should We Send Your Quote?
+              </h2>
+              <p class="text-gray-600">Your personalized rates are ready</p>
+            </div>
+
+            <div class="space-y-4 mb-6">
+              <div>
+                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  required
+                  autocomplete="name"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all capitalize"
+                  placeholder="John Smith"
+                />
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  autocomplete="tel"
+                  inputmode="tel"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  placeholder="(805) 555-0123"
+                />
+                <p class="text-xs text-gray-400 mt-1">We'll call or text with your personalized quote</p>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                  Email <span class="text-gray-400 font-normal">(optional)</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  inputmode="email"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  placeholder="john@example.com"
+                />
+              </div>
+            </div>
+
+            <div class="flex gap-3 mb-4">
+              <button
+                type="button"
+                id="back-4"
+                class="px-6 py-4 border-2 border-gray-300 rounded-xl text-gray-600 font-medium hover:bg-gray-50 transition-all"
+              >
+                ← Back
+              </button>
+              <button
+                type="submit"
+                id="submit-btn"
+                class="flex-1 bg-green-600 text-white py-4 px-6 rounded-xl text-lg font-bold hover:bg-green-700 transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                <span id="submit-text">Get My Free Quote</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+
+            <p class="text-xs text-gray-500 text-center">
+              By clicking "Get My Free Quote", you agree to receive a call/text from a licensed agent to discuss your options.
+              <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>
+            </p>
+          </div>
+
+          <!-- SUCCESS STATE -->
+          <div id="step-success" class="step-content hidden">
+            <div class="text-center py-4">
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce-once">
+                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                Your Quote is Being Prepared!
+              </h2>
+              <p class="text-gray-600 mb-6">
+                A licensed local agent will call you shortly.
+              </p>
+
+              <!-- Speed to Lead Hook -->
+              <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white mb-6">
+                <p class="font-bold text-lg mb-2">Want Your Quote Even Faster?</p>
+                <p class="text-blue-100 text-sm mb-4">Skip the wait and call us now to lock in your rate</p>
+                <a
+                  href="tel:+18058457005"
+                  class="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                  <span>(805) 845-7005</span>
+                </a>
+              </div>
+
+              <!-- Next Steps -->
+              <div class="bg-gray-50 rounded-xl p-5 text-left">
+                <p class="font-semibold text-gray-900 text-sm mb-3">What happens next:</p>
+                <div class="space-y-3">
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-blue-600 font-bold text-xs">1</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      <strong>Save this number:</strong> <span class="font-mono bg-gray-200 px-2 py-0.5 rounded">(805) 845-7005</span>
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-blue-600 font-bold text-xs">2</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      <strong>Expect a call</strong> within 1-2 hours during business hours
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-blue-600 font-bold text-xs">3</span>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                      <strong>Have your current policy handy</strong> so we can beat your rate
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <!-- Trust Signals Below Form -->
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span>256-bit encryption</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span>No spam, ever</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span>Licensed CA agents</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bounce-once {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-bounce-once {
+    animation: bounce-once 0.5s ease-out;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('multi-step-form') as HTMLFormElement;
+  const progressBar = document.getElementById('progress-bar');
+  const currentStepEl = document.getElementById('current-step');
+
+  let currentStep = 1;
+  const totalSteps = 4;
+
+  // Form data storage
+  const formData: Record<string, any> = {};
+
+  // Phone formatting
+  const phoneInput = document.getElementById('phone') as HTMLInputElement;
+  phoneInput?.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    let value = target.value.replace(/\D/g, '');
+    if (value.length >= 6) {
+      value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+    } else if (value.length >= 3) {
+      value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+    }
+    target.value = value;
+  });
+
+  // Name auto-capitalize
+  const nameInput = document.getElementById('fullName') as HTMLInputElement;
+  nameInput?.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    target.value = target.value.replace(/\b\w/g, c => c.toUpperCase());
+  });
+
+  // Pre-fill ZIP from session storage
+  const savedZip = sessionStorage.getItem('userZipCode');
+  if (savedZip) {
+    const zipInput = document.getElementById('zipCode') as HTMLInputElement;
+    if (zipInput) zipInput.value = savedZip;
+  }
+
+  function updateProgress() {
+    const progress = (currentStep / totalSteps) * 100;
+    if (progressBar) progressBar.style.width = `${progress}%`;
+    if (currentStepEl) currentStepEl.textContent = String(currentStep);
+  }
+
+  function showStep(step: number) {
+    document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+    const stepEl = document.getElementById(`step-${step}`);
+    stepEl?.classList.remove('hidden');
+    currentStep = step;
+    updateProgress();
+
+    // Track step view
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'form_step_view', {
+        'event_category': 'form',
+        'event_label': `step_${step}`,
+        'value': step
+      });
+    }
+  }
+
+  function validateStep(step: number): boolean {
+    if (step === 1) {
+      const zip = (document.getElementById('zipCode') as HTMLInputElement)?.value;
+      if (!zip || zip.length !== 5) {
+        alert('Please enter a valid 5-digit ZIP code');
+        return false;
+      }
+      formData.zipCode = zip;
+      sessionStorage.setItem('userZipCode', zip);
+    }
+
+    if (step === 2) {
+      const checked = document.querySelectorAll('input[name="insuranceTypes"]:checked');
+      if (checked.length === 0) {
+        alert('Please select at least one insurance type');
+        return false;
+      }
+      formData.insuranceTypes = Array.from(checked).map((el: any) => el.value);
+    }
+
+    if (step === 3) {
+      const insured = document.querySelector('input[name="currentlyInsured"]:checked') as HTMLInputElement;
+      const homeowner = document.querySelector('input[name="homeowner"]:checked') as HTMLInputElement;
+      formData.currentlyInsured = insured?.value || 'not_specified';
+      formData.homeowner = homeowner?.value || 'not_specified';
+    }
+
+    return true;
+  }
+
+  // Navigation handlers
+  document.getElementById('next-1')?.addEventListener('click', () => {
+    if (validateStep(1)) showStep(2);
+  });
+
+  document.getElementById('next-2')?.addEventListener('click', () => {
+    if (validateStep(2)) showStep(3);
+  });
+
+  document.getElementById('next-3')?.addEventListener('click', () => {
+    if (validateStep(3)) showStep(4);
+  });
+
+  document.getElementById('back-2')?.addEventListener('click', () => showStep(1));
+  document.getElementById('back-3')?.addEventListener('click', () => showStep(2));
+  document.getElementById('back-4')?.addEventListener('click', () => showStep(3));
+
+  // Enter key navigation
+  document.getElementById('zipCode')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('next-1')?.click();
+    }
+  });
+
+  // Form submission
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fullName = (document.getElementById('fullName') as HTMLInputElement)?.value;
+    const phone = (document.getElementById('phone') as HTMLInputElement)?.value;
+    const email = (document.getElementById('email') as HTMLInputElement)?.value;
+
+    if (!fullName || !phone) {
+      alert('Please fill in your name and phone number');
+      return;
+    }
+
+    // Split name
+    const nameParts = fullName.trim().split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const submitText = document.getElementById('submit-text');
+
+    submitBtn.disabled = true;
+    if (submitText) submitText.textContent = 'Submitting...';
+
+    const data = {
+      firstName,
+      lastName,
+      email: email || '',
+      phone,
+      insuranceType: formData.insuranceTypes?.join(', ') || 'general',
+      zipCode: formData.zipCode,
+      currentlyInsured: formData.currentlyInsured,
+      homeowner: formData.homeowner,
+      source: window.location.pathname,
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      const response = await fetch('https://bzjssogezdnybbenqygq.supabase.co/functions/v1/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error('Failed to submit');
+
+      // Track conversion
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', {
+          'event_category': 'form',
+          'event_label': data.insuranceType,
+          'value': 1
+        });
+      }
+
+      // Show success
+      document.getElementById('step-indicator')?.classList.add('hidden');
+      progressBar?.parentElement?.classList.add('hidden');
+      showStep('success' as any);
+
+      sessionStorage.setItem('leadSubmitted', 'true');
+      sessionStorage.removeItem('userZipCode');
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Something went wrong. Please try again.');
+      submitBtn.disabled = false;
+      if (submitText) submitText.textContent = 'Get My Free Quote';
+    }
+  });
+</script>

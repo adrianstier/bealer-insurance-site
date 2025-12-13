@@ -5,9 +5,22 @@ interface Props {
   href: string;
   icon: "car" | "home" | "building" | "users" | "heart" | "shield";
   priceFrom?: string;
+  insuranceType?: string;
 }
 
-const { title, description, href, icon, priceFrom } = Astro.props;
+const { title, description, href, icon, priceFrom, insuranceType } = Astro.props;
+
+// Map icon to insurance type for form pre-fill
+const iconToType: Record<string, string> = {
+  car: "auto",
+  home: "home",
+  users: "renters",
+  heart: "life",
+  building: "business",
+  shield: "other"
+};
+
+const formType = insuranceType || iconToType[icon] || "";
 
 // Default prices for each type
 const defaultPrices: Record<string, string> = {
@@ -31,10 +44,7 @@ const icons = {
 };
 ---
 
-<a
-  href={href}
-  class="group block bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 relative overflow-hidden"
->
+<div class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 relative overflow-hidden">
   <!-- Price badge -->
   {displayPrice && (
     <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
@@ -53,21 +63,47 @@ const icons = {
       />
     </div>
     <div class="flex-1">
-      <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
         {title}
       </h3>
-      <p class="text-gray-600 text-sm leading-relaxed">
+      <p class="text-gray-600 text-sm leading-relaxed mb-4">
         {description}
       </p>
-      <div class="mt-4 flex items-center justify-between">
-        <span class="text-blue-600 text-sm font-medium flex items-center">
+      <div class="flex items-center gap-3">
+        <a
+          href={`#quote-form`}
+          class="service-quote-btn inline-flex items-center bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600 transition-colors shadow-sm"
+          data-insurance-type={formType}
+        >
           Get Quote
-          <svg class="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
-        </span>
-        <span class="text-xs text-gray-400">Compare 20+ carriers</span>
+        </a>
+        <a href={href} class="text-blue-600 text-sm font-medium hover:underline">
+          Learn more
+        </a>
       </div>
     </div>
   </div>
-</a>
+</div>
+
+<script>
+  // Pre-fill insurance type when clicking service card quote buttons
+  document.querySelectorAll('.service-quote-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const insuranceType = target.dataset.insuranceType;
+
+      if (insuranceType) {
+        // Wait for scroll, then pre-fill
+        setTimeout(() => {
+          const typeSelect = document.getElementById('insuranceType') as HTMLSelectElement;
+          if (typeSelect) {
+            typeSelect.value = insuranceType;
+          }
+        }, 300);
+      }
+    });
+  });
+</script>

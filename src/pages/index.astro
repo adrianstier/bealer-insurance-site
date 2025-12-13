@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import LeadForm from '../components/LeadForm.astro';
+import MultiStepForm from '../components/MultiStepForm.astro';
+import CarrierLogos from '../components/CarrierLogos.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import MobileStickyCTA from '../components/MobileStickyCTA.astro';
 import FAQ from '../components/FAQ.astro';
@@ -12,31 +13,31 @@ import Testimonials from '../components/Testimonials.astro';
 const services = [
   {
     title: "Auto Insurance",
-    description: "Save hundreds on car insurance in Goleta and Santa Barbara. Compare rates from 20+ carriers for liability, collision, and comprehensive coverage.",
+    description: "Save hundreds on car insurance. Compare rates from 20+ carriers for liability, collision, and comprehensive coverage.",
     href: "/auto-insurance-goleta",
     icon: "car" as const
   },
   {
     title: "Home Insurance",
-    description: "Protect your Santa Barbara County home from wildfires, earthquakes, and more. Local agents who understand coastal California risks.",
+    description: "Protect your home from wildfires, earthquakes, and more. Agents who understand California's coastal risks.",
     href: "/home-insurance-goleta",
     icon: "home" as const
   },
   {
     title: "Renters Insurance",
-    description: "UCSB students and Isla Vista residents - protect your stuff for as low as $15/month. Covers theft, liability, and more.",
+    description: "UCSB students & Isla Vista residents - protect your stuff for as low as $12/month. Covers theft & liability.",
     href: "/renters-insurance-goleta",
     icon: "users" as const
   },
   {
     title: "Life Insurance",
-    description: "Protect your Goleta family's future. Term life starting at $20/month. Lock in low rates while you're young and healthy.",
+    description: "Protect your family's future. Term life starting at $20/month. Lock in low rates while you're young.",
     href: "/life-insurance-goleta",
     icon: "heart" as const
   },
   {
     title: "Business Insurance",
-    description: "Coverage for Goleta and Santa Barbara businesses. General liability, workers' comp, and commercial property from local experts.",
+    description: "Coverage for Santa Barbara businesses. General liability, workers' comp, and commercial property.",
     href: "/business-insurance-goleta",
     icon: "building" as const
   }
@@ -44,50 +45,58 @@ const services = [
 
 const faqs = [
   {
-    question: "Why should I choose a local Goleta insurance agent?",
-    answer: "A local agent understands the unique risks of living in the Goleta and Santa Barbara area, including wildfire zones, coastal flooding, and local traffic patterns. They can help you find coverage that addresses these specific concerns while potentially saving you money with regional discounts."
+    question: "How much can I really save by comparing quotes?",
+    answer: "Santa Barbara County residents who compare quotes through us save an average of $547 per year. Some save over $1,000 by bundling home and auto. The comparison is free and takes just 2 minutes."
   },
   {
-    question: "How quickly can I get a quote?",
-    answer: "Most quotes can be provided within 24 hours. For simple auto or renters insurance, you may receive a quote within a few hours. Local agents work quickly to get you the coverage you need."
+    question: "How quickly will I get my quote?",
+    answer: "A licensed local agent will contact you within 1-2 hours during business hours (M-F 9am-6pm). For after-hours requests, you'll hear back first thing the next morning. Many customers get multiple quotes to compare the same day."
+  },
+  {
+    question: "Is my information secure?",
+    answer: "Absolutely. We use 256-bit SSL encryption (the same security banks use) and never sell your data to third parties. Your information goes directly to a licensed California insurance agent."
   },
   {
     question: "Do you offer discounts for UCSB students?",
-    answer: "Yes! Local agents offer special rates for UCSB students on renters and auto insurance. Good student discounts, multi-policy bundles, and safe driver programs can help reduce your premiums significantly."
+    answer: "Yes! Local agents offer special rates for UCSB students on renters and auto insurance. Good student discounts, multi-policy bundles, and safe driver programs can reduce your premiums by 20-30%."
   },
   {
     question: "What areas do you serve?",
-    answer: "We connect you with agents serving Goleta, Santa Barbara, Isla Vista, Carpinteria, Montecito, and the surrounding Central Coast communities. Our network of agents is familiar with the specific insurance needs of each neighborhood."
+    answer: "We connect you with agents serving Goleta, Santa Barbara, Isla Vista, Carpinteria, Montecito, Summerland, Hope Ranch, and surrounding Central Coast communities."
   },
   {
-    question: "Can you help with claims?",
-    answer: "Absolutely. Your local insurance agent will guide you through the entire claims process. From filing the initial claim to negotiating with insurance companies, they're there to help you get the settlement you deserve."
+    question: "Can you help me switch from my current insurance?",
+    answer: "Definitely. Your agent will handle the entire switch, ensuring there's no gap in coverage. They'll also check if you're owed any refund from your current policy."
   }
 ];
 ---
 
 <BaseLayout
-  title="805 Insurance | Auto, Home & Renters Insurance in Santa Barbara County"
-  description="Your local insurance connection for the 805. Get competitive quotes on auto, home, renters, and business insurance. Serving Goleta, Santa Barbara, Isla Vista & UCSB."
+  title="Stop Overpaying for Insurance | Compare Rates in Goleta & Santa Barbara"
+  description="Compare auto, home & renters insurance from 20+ carriers in 2 minutes. Santa Barbara County residents save $547/year on average. Free quotes, no obligation."
 >
   <Header slot="header" currentPath="/" />
 
-  <Hero
-    title="Insurance for the 805"
-    subtitle="Your local connection to trusted agents in Santa Barbara County. Auto, home, renters, life & business insurance - all in one place."
-  />
+  <!-- Hero with benefit-driven headline and ZIP entry -->
+  <Hero />
+
+  <!-- Carrier Logos Trust Bar -->
+  <CarrierLogos />
+
+  <!-- Multi-Step Quote Form -->
+  <MultiStepForm />
 
   <!-- Services Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Insurance Services for Every Need</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What Do You Need to Protect?</h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          From protecting your car on Highway 101 to insuring your Goleta home against wildfires, we connect you with the right coverage.
+          Whether it's your car, home, or family — we'll find you the best rate.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <ServiceCard {...service} />
         ))}
@@ -95,89 +104,65 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
-  <section class="py-16 bg-white">
+  <!-- Why Compare Through Us -->
+  <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">
-            Why Goleta Families Choose Local Agents
-          </h2>
-          <div class="space-y-6">
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900">Local Expertise</h3>
-                <p class="text-gray-600">Agents who understand the unique risks of the Goleta and Santa Barbara area.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900">Multiple Carrier Options</h3>
-                <p class="text-gray-600">Compare rates from 20+ top insurance carriers to find the best coverage and price.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900">Claims Advocacy</h3>
-                <p class="text-gray-600">When you need to file a claim, your agent is in your corner to help navigate the process.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900">Personalized Service</h3>
-                <p class="text-gray-600">Work with real people who care about your coverage, not a call center.</p>
-              </div>
-            </div>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Why Compare Rates Here?
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Unlike going to one carrier, we shop 20+ companies to find your lowest rate.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+          <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Save $547/Year Average</h3>
+          <p class="text-gray-600">Our customers save an average of $547 per year by comparing multiple carriers instead of sticking with one.</p>
         </div>
 
-        <!-- Stats -->
-        <div class="bg-blue-600 rounded-2xl p-8 text-white">
-          <div class="grid grid-cols-2 gap-8">
-            <div class="text-center">
-              <div class="text-4xl font-bold mb-2">20+</div>
-              <div class="text-blue-200">Insurance Carriers</div>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold mb-2">24hr</div>
-              <div class="text-blue-200">Quote Turnaround</div>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold mb-2">100%</div>
-              <div class="text-blue-200">Licensed Agents</div>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold mb-2">Free</div>
-              <div class="text-blue-200">No-Obligation Quotes</div>
-            </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Quote in 2 Minutes</h3>
+          <p class="text-gray-600">Our simple form takes just 2 minutes. No long applications, no paperwork. Get your personalized rate fast.</p>
         </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+          <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Real Local Agents</h3>
+          <p class="text-gray-600">Talk to a licensed California agent who knows Santa Barbara County — not a robot or out-of-state call center.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-10">
+        <a
+          href="#quote-form"
+          class="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+        >
+          <span>Compare My Rates Now</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <p class="text-sm text-gray-500 mt-3">Free • No obligation • Takes 2 minutes</p>
       </div>
     </div>
   </section>
-
-  <!-- Lead Form -->
-  <LeadForm />
 
   <!-- Testimonials Section -->
   <Testimonials />
@@ -186,19 +171,51 @@ const faqs = [
   <FAQ faqs={faqs} />
 
   <!-- Local Areas Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Serving the Central Coast</h2>
-        <p class="text-lg text-gray-600">Connecting you with agents across these communities</p>
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Serving the 805</h2>
+        <p class="text-gray-600">Connecting you with agents across Santa Barbara County</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Goleta", "Santa Barbara", "Isla Vista", "Carpinteria", "Montecito", "Summerland", "Hope Ranch", "UCSB Campus"].map((area) => (
-          <div class="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
-            <span class="text-gray-900 font-medium">{area}</span>
-          </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {["Goleta", "Santa Barbara", "Isla Vista", "Carpinteria", "Montecito", "Summerland", "Hope Ranch", "UCSB"].map((area) => (
+          <span class="bg-white rounded-full px-4 py-2 text-sm font-medium text-gray-700 shadow-sm border border-gray-100">
+            {area}
+          </span>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Ready to Stop Overpaying?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        Join hundreds of Santa Barbara County residents who've found better rates.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="#quote-form"
+          class="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-lg"
+        >
+          <span>Get My Free Quote</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a
+          href="tel:+18058457005"
+          class="inline-flex items-center justify-center gap-2 bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all border border-white/30"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+          <span>Call (805) 845-7005</span>
+        </a>
       </div>
     </div>
   </section>
