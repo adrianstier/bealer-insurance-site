@@ -1,0 +1,88 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  faqs: FAQItem[];
+}
+
+const { title = "Frequently Asked Questions", faqs } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">{title}</h2>
+
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+            aria-expanded="false"
+            aria-controls={`faq-content-${index}`}
+          >
+            <span class="font-medium text-gray-900 pr-4">{faq.question}</span>
+            <svg
+              class="faq-icon w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            id={`faq-content-${index}`}
+            class="faq-content hidden"
+          >
+            <div class="p-5 pt-0 text-gray-600 leading-relaxed">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const content = trigger.nextElementSibling as HTMLElement;
+      const icon = trigger.querySelector('.faq-icon');
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-trigger').forEach(otherTrigger => {
+        if (otherTrigger !== trigger) {
+          otherTrigger.setAttribute('aria-expanded', 'false');
+          (otherTrigger.nextElementSibling as HTMLElement)?.classList.add('hidden');
+          otherTrigger.querySelector('.faq-icon')?.classList.remove('rotate-180');
+        }
+      });
+
+      // Toggle current FAQ
+      trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+      content?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

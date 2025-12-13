@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import FAQ from '../components/FAQ.astro';
+
+const coverageTypes = [
+  {
+    title: "Liability Coverage",
+    description: "Covers damages and injuries you cause to others. California requires minimum $15,000/$30,000 bodily injury and $5,000 property damage."
+  },
+  {
+    title: "Collision Coverage",
+    description: "Pays for repairs to your vehicle after an accident, regardless of fault. Essential for protecting your investment."
+  },
+  {
+    title: "Comprehensive Coverage",
+    description: "Protects against non-collision damage: theft, vandalism, fire, falling objects, and animal strikes on Highway 101."
+  },
+  {
+    title: "Uninsured Motorist",
+    description: "Covers you if hit by a driver without insurance. About 16% of California drivers are uninsured."
+  },
+  {
+    title: "Medical Payments",
+    description: "Pays medical expenses for you and passengers, regardless of fault. Quick access to funds without waiting for claims."
+  },
+  {
+    title: "Roadside Assistance",
+    description: "24/7 help for breakdowns, flat tires, lockouts, and towing. Peace of mind on the 101 and local roads."
+  }
+];
+
+const faqs = [
+  {
+    question: "What's the average cost of car insurance in Goleta?",
+    answer: "The average annual car insurance premium in Goleta ranges from $1,400 to $2,200, depending on your driving history, vehicle, and coverage levels. This is slightly lower than Los Angeles due to lower traffic density and crime rates. We can often find savings by comparing multiple carriers."
+  },
+  {
+    question: "Do I need full coverage or just liability?",
+    answer: "California only requires liability insurance, but if you have a car loan or lease, full coverage (liability + collision + comprehensive) is typically required. Even without a loan, comprehensive coverage protects against common Goleta risks like car break-ins near UCSB and deer strikes on Highway 154."
+  },
+  {
+    question: "How can I lower my auto insurance rate?",
+    answer: "Common ways to save include: bundling with home/renters insurance (up to 25% off), maintaining a clean driving record, completing defensive driving courses, good student discounts for drivers under 25, low mileage discounts if you work from home, and choosing a higher deductible."
+  },
+  {
+    question: "What discounts are available for UCSB students?",
+    answer: "UCSB students can qualify for good student discounts (typically 10-25% off with a B average), distant student discounts if the car stays home, and multi-policy discounts when bundling with renters insurance. Some carriers also offer discounts for completing driver's ed."
+  },
+  {
+    question: "What should I do after a car accident in Goleta?",
+    answer: "First, ensure everyone's safety and call 911 if needed. Exchange information with other drivers, take photos, and file a police report if there's significant damage. Then contact us - we'll help file your claim and guide you through the process with the insurance company."
+  },
+  {
+    question: "Does my insurance cover me in Mexico?",
+    answer: "Most U.S. policies don't cover you in Mexico. If you're planning a trip to Baja, you'll need separate Mexican auto insurance. We can help you get short-term Mexico coverage before your trip."
+  }
+];
+---
+
+<BaseLayout
+  title="Auto Insurance Goleta, CA | Car Insurance Quotes | Bealer Insurance"
+  description="Get affordable auto insurance in Goleta. Compare car insurance quotes from 20+ carriers. Local agents serving Santa Barbara, Isla Vista & UCSB students."
+>
+  <Header slot="header" currentPath="/auto-insurance-goleta" />
+
+  <Hero
+    title="Auto Insurance for Goleta Drivers"
+    subtitle="Protect your vehicle with coverage tailored to local roads and risks. Compare quotes from 20+ carriers and save."
+    ctaText="Get Your Auto Quote"
+  />
+
+  <!-- Coverage Types -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Auto Insurance Coverage Options</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Build a policy that fits your needs and budget. From state minimums to full protection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {coverageTypes.map((coverage) => (
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{coverage.title}</h3>
+            <p class="text-gray-600 text-sm">{coverage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Context Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Auto Insurance Tailored to Goleta Roads</h2>
+          <p class="text-blue-100 mb-6">
+            From the daily commute on Highway 101 to navigating UCSB campus traffic, Goleta drivers face unique challenges. Our local agents understand these risks and can help you find the right coverage.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Coverage for Highway 101 commute risks and high-traffic areas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Comprehensive protection against vehicle theft near Isla Vista</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Uninsured motorist coverage (16% of CA drivers are uninsured)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Deer and wildlife collision coverage for Highway 154</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-6">Goleta Auto Insurance Savings</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Multi-Policy Bundle</span>
+              <span class="font-bold text-green-300">Up to 25% off</span>
+            </div>
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Good Driver Discount</span>
+              <span class="font-bold text-green-300">Up to 20% off</span>
+            </div>
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Good Student (UCSB)</span>
+              <span class="font-bold text-green-300">Up to 15% off</span>
+            </div>
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Defensive Driving Course</span>
+              <span class="font-bold text-green-300">Up to 10% off</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Low Mileage Discount</span>
+              <span class="font-bold text-green-300">Up to 15% off</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <LeadForm
+    insuranceType="auto"
+    heading="Get Your Free Auto Insurance Quote"
+    subheading="Compare rates from 20+ carriers in minutes"
+  />
+
+  <!-- FAQ Section -->
+  <FAQ title="Auto Insurance FAQs" faqs={faqs} />
+
+  <!-- Related Services -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Bundle & Save with Additional Coverage</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/home-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Home Insurance</h3>
+          <p class="text-gray-600 text-sm">Bundle with auto for up to 25% savings on both policies.</p>
+        </a>
+        <a href="/renters-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Renters Insurance</h3>
+          <p class="text-gray-600 text-sm">Perfect for UCSB students. Bundle starting at $15/month.</p>
+        </a>
+        <a href="/business-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Commercial Auto</h3>
+          <p class="text-gray-600 text-sm">Coverage for business vehicles and fleet insurance.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

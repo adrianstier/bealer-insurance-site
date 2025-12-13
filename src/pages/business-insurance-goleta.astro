@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import FAQ from '../components/FAQ.astro';
+
+const coverageTypes = [
+  {
+    title: "General Liability",
+    description: "Protects against claims of bodily injury, property damage, and personal injury from your business operations."
+  },
+  {
+    title: "Commercial Property",
+    description: "Covers your building, equipment, inventory, and furniture against fire, theft, and other covered perils."
+  },
+  {
+    title: "Business Owner's Policy (BOP)",
+    description: "Combines general liability and property coverage at a discounted rate - ideal for small businesses."
+  },
+  {
+    title: "Workers' Compensation",
+    description: "Required in California for all employers. Covers medical expenses and lost wages for injured employees."
+  },
+  {
+    title: "Professional Liability",
+    description: "Also called E&O insurance. Protects against claims of negligence, errors, or omissions in professional services."
+  },
+  {
+    title: "Commercial Auto",
+    description: "Coverage for vehicles used for business purposes - delivery vans, company cars, and fleet vehicles."
+  }
+];
+
+const industries = [
+  { name: "Restaurants & Cafes", icon: "🍽️" },
+  { name: "Retail Shops", icon: "🛍️" },
+  { name: "Tech Startups", icon: "💻" },
+  { name: "Professional Services", icon: "📊" },
+  { name: "Contractors", icon: "🔨" },
+  { name: "Healthcare", icon: "⚕️" },
+  { name: "Wineries & Breweries", icon: "🍷" },
+  { name: "Tourism & Hospitality", icon: "🏨" }
+];
+
+const faqs = [
+  {
+    question: "What business insurance is required in California?",
+    answer: "California requires workers' compensation if you have employees, commercial auto insurance for business vehicles, and certain industries require professional liability. General liability isn't legally required but is essential for protecting your business and often required by landlords and clients."
+  },
+  {
+    question: "How much does business insurance cost in Goleta?",
+    answer: "Costs vary widely by industry and coverage needs. A basic BOP for a small retail shop might cost $500-1,500/year, while a restaurant could pay $3,000-10,000/year. We compare quotes from multiple carriers to find competitive rates for Goleta businesses."
+  },
+  {
+    question: "What's a Business Owner's Policy (BOP)?",
+    answer: "A BOP bundles general liability and commercial property coverage into one policy at a discounted rate. It's ideal for small to medium businesses. You can add endorsements for specific risks like cyber liability, equipment breakdown, or business interruption."
+  },
+  {
+    question: "Do I need business insurance for a home-based business?",
+    answer: "Yes! Home insurance typically excludes business activities. If you run a business from home - whether consulting, e-commerce, or services - you need separate business coverage. A home-based business endorsement or separate BOP can protect you."
+  },
+  {
+    question: "What's the difference between general liability and professional liability?",
+    answer: "General liability covers physical injuries and property damage (like a customer slipping in your store). Professional liability covers claims of negligence, errors, or poor work in professional services (like an accountant making an error on a tax return)."
+  },
+  {
+    question: "How do I lower my business insurance costs?",
+    answer: "Bundle multiple policies, implement safety programs, maintain good loss history, increase deductibles, and review coverage annually. We also shop multiple carriers to find the best rates for Goleta businesses."
+  }
+];
+---
+
+<BaseLayout
+  title="Business Insurance Goleta, CA | Commercial Insurance Quotes | Bealer Insurance"
+  description="Protect your Goleta business with comprehensive commercial insurance. General liability, workers' comp, and BOP coverage for Santa Barbara County businesses."
+>
+  <Header slot="header" currentPath="/business-insurance-goleta" />
+
+  <Hero
+    title="Business Insurance for Goleta Entrepreneurs"
+    subtitle="Protect your livelihood with coverage designed for local businesses. From tech startups to wineries, we've got you covered."
+    ctaText="Get Your Business Quote"
+  />
+
+  <!-- Coverage Types -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Business Insurance Coverage Options</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Comprehensive protection for every aspect of your business operations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {coverageTypes.map((coverage) => (
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{coverage.title}</h3>
+            <p class="text-gray-600 text-sm">{coverage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Served -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Specialized coverage for Goleta and Santa Barbara's diverse business community.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {industries.map((industry) => (
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div class="text-3xl mb-3">{industry.icon}</div>
+            <span class="text-gray-900 font-medium">{industry.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Business Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Insurance for Goleta's Growing Business Community</h2>
+          <p class="text-blue-100 mb-6">
+            From Hollister Avenue retailers to Goleta industrial park manufacturers, we understand the unique insurance needs of Santa Barbara County businesses.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Tech Corridor Coverage</strong> - E&O and cyber liability for Goleta tech companies</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Restaurant & Hospitality</strong> - Liquor liability and food contamination coverage</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Contractor Coverage</strong> - Bonding, workers' comp, and equipment protection</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Wine Country</strong> - Specialized coverage for wineries and tasting rooms</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white text-gray-900 rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-6">California Requirements</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3 pb-4 border-b border-gray-200">
+              <svg class="w-6 h-6 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold">Workers' Compensation</div>
+                <div class="text-sm text-gray-600">Required if you have any employees</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 pb-4 border-b border-gray-200">
+              <svg class="w-6 h-6 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold">Commercial Auto</div>
+                <div class="text-sm text-gray-600">Required for business-use vehicles</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 pb-4 border-b border-gray-200">
+              <svg class="w-6 h-6 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold">General Liability</div>
+                <div class="text-sm text-gray-600">Often required by landlords & clients</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold">Professional Liability</div>
+                <div class="text-sm text-gray-600">Required for licensed professionals</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <LeadForm
+    insuranceType="business"
+    heading="Get Your Free Business Insurance Quote"
+    subheading="Protect your Goleta business with the right coverage"
+  />
+
+  <!-- FAQ Section -->
+  <FAQ title="Business Insurance FAQs" faqs={faqs} />
+
+  <!-- Related Services -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Complete Business Protection</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/auto-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Commercial Auto</h3>
+          <p class="text-gray-600 text-sm">Coverage for company vehicles, delivery vans, and fleet insurance.</p>
+        </a>
+        <a href="/home-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Home-Based Business</h3>
+          <p class="text-gray-600 text-sm">Protect your home business with proper coverage beyond homeowners.</p>
+        </a>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <h3 class="font-semibold text-gray-900 mb-2">Cyber Liability</h3>
+          <p class="text-gray-600 text-sm">Data breach protection for businesses that handle customer information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

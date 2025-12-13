@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import FAQ from '../components/FAQ.astro';
+
+const coverageTypes = [
+  {
+    title: "Personal Property",
+    description: "Covers your belongings - electronics, furniture, clothing, and more - against theft, fire, and other covered perils."
+  },
+  {
+    title: "Liability Protection",
+    description: "Covers legal expenses if someone is injured in your rental or you accidentally damage someone else's property."
+  },
+  {
+    title: "Additional Living Expenses",
+    description: "Pays for hotel, food, and other costs if your rental becomes uninhabitable after a covered loss."
+  },
+  {
+    title: "Medical Payments",
+    description: "Covers medical bills for guests injured in your rental, regardless of fault. Helps avoid lawsuits."
+  },
+  {
+    title: "Theft Coverage",
+    description: "Protects against theft both at home and away - including stolen bikes, laptops, and items from your car."
+  },
+  {
+    title: "Water Damage",
+    description: "Covers damage from burst pipes, appliance leaks, and other sudden water events."
+  }
+];
+
+const faqs = [
+  {
+    question: "How much does renters insurance cost in Goleta?",
+    answer: "Renters insurance in Goleta typically costs $15-30 per month for $30,000 in personal property coverage and $100,000 in liability. UCSB students and Isla Vista residents often qualify for even lower rates with multi-policy discounts."
+  },
+  {
+    question: "Does my landlord's insurance cover my belongings?",
+    answer: "No. Your landlord's insurance only covers the building structure, not your personal belongings or liability. If there's a fire, theft, or water damage, your possessions wouldn't be covered without renters insurance."
+  },
+  {
+    question: "What's covered under renters insurance?",
+    answer: "Renters insurance covers your personal belongings against theft, fire, vandalism, smoke damage, and certain water damage. It also provides liability coverage if someone is injured in your rental and additional living expenses if you're displaced."
+  },
+  {
+    question: "Do I need renters insurance for UCSB student housing?",
+    answer: "While not always required, we strongly recommend it. UCSB dorms and Isla Vista apartments are frequent targets for theft. A policy can cover laptops, bikes, phones, and other valuables - often for less than the cost of a streaming subscription."
+  },
+  {
+    question: "Does renters insurance cover my roommates?",
+    answer: "Typically, no. Each roommate needs their own policy unless you're married or domestic partners. However, many insurers offer discounts for referrals, so you and your roommates can all save by getting coverage."
+  },
+  {
+    question: "Is bike theft covered by renters insurance?",
+    answer: "Yes! Bike theft is covered under personal property coverage. Given how common bike theft is in Isla Vista and around UCSB, this alone can make renters insurance worthwhile. Just make sure your coverage limit is high enough."
+  }
+];
+---
+
+<BaseLayout
+  title="Renters Insurance Goleta & Isla Vista | UCSB Student Insurance | Bealer Insurance"
+  description="Affordable renters insurance for Goleta, Isla Vista, and UCSB students. Protect your belongings from theft and damage starting at $15/month."
+>
+  <Header slot="header" currentPath="/renters-insurance-goleta" />
+
+  <Hero
+    title="Renters Insurance for Isla Vista & UCSB Students"
+    subtitle="Protect your stuff for less than a coffee per week. Theft, fire, and liability coverage that travels with you."
+    ctaText="Get Your Renters Quote"
+  />
+
+  <!-- Why Renters Insurance -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why UCSB Students Need Renters Insurance</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Isla Vista has one of the highest bike theft rates in California. Protect your laptop, bike, and belongings for less than Netflix.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Theft is Common</h3>
+          <p class="text-gray-600">IV has high rates of bike theft and car break-ins. Renters insurance covers stolen items.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Liability Protection</h3>
+          <p class="text-gray-600">If someone gets hurt at your place, liability coverage protects you from lawsuits.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Surprisingly Affordable</h3>
+          <p class="text-gray-600">Starting at $15/month - less than one burrito from Freebirds per week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Types -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What's Covered</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Comprehensive protection for your college life and beyond.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {coverageTypes.map((coverage) => (
+          <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{coverage.title}</h3>
+            <p class="text-gray-600 text-sm">{coverage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Simple, Affordable Coverage</h2>
+        <p class="text-blue-100 text-lg">Protection that fits a student budget</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
+          <div class="text-4xl font-bold mb-2">$15</div>
+          <div class="text-blue-200 mb-4">/month</div>
+          <div class="text-sm">
+            <div class="mb-2">$20,000 Personal Property</div>
+            <div class="mb-2">$100,000 Liability</div>
+            <div>$500 Deductible</div>
+          </div>
+        </div>
+        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 text-center border-2 border-white/50">
+          <div class="bg-white text-blue-600 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">MOST POPULAR</div>
+          <div class="text-4xl font-bold mb-2">$22</div>
+          <div class="text-blue-200 mb-4">/month</div>
+          <div class="text-sm">
+            <div class="mb-2">$30,000 Personal Property</div>
+            <div class="mb-2">$100,000 Liability</div>
+            <div>$250 Deductible</div>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
+          <div class="text-4xl font-bold mb-2">$30</div>
+          <div class="text-blue-200 mb-4">/month</div>
+          <div class="text-sm">
+            <div class="mb-2">$50,000 Personal Property</div>
+            <div class="mb-2">$300,000 Liability</div>
+            <div>$250 Deductible</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-blue-200 mt-8 text-sm">
+        *Rates are estimates. Your actual rate depends on location, coverage options, and discounts.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <LeadForm
+    insuranceType="renters"
+    heading="Get Your Free Renters Quote"
+    subheading="Takes less than 2 minutes - protect your stuff today"
+  />
+
+  <!-- FAQ Section -->
+  <FAQ title="Renters Insurance FAQs" faqs={faqs} />
+
+  <!-- Areas Served -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Serving Renters Throughout the Area</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {["Isla Vista", "UCSB Campus", "Downtown Goleta", "Old Town Goleta", "Santa Barbara", "Ellwood", "Storke Ranch", "University Village"].map((area) => (
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
+            <span class="text-gray-900 font-medium">{area}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import FAQ from '../components/FAQ.astro';
+
+const services = [
+  {
+    title: "Auto Insurance",
+    description: "Comprehensive coverage for your vehicle with competitive rates. Protect yourself on Goleta's roads with liability, collision, and comprehensive options.",
+    href: "/auto-insurance-goleta",
+    icon: "car" as const
+  },
+  {
+    title: "Home Insurance",
+    description: "Safeguard your biggest investment. Coverage for Goleta and Santa Barbara homes against fire, theft, natural disasters, and liability.",
+    href: "/home-insurance-goleta",
+    icon: "home" as const
+  },
+  {
+    title: "Renters Insurance",
+    description: "Affordable protection for UCSB students and Isla Vista residents. Cover your belongings and get liability protection starting under $20/month.",
+    href: "/renters-insurance-goleta",
+    icon: "users" as const
+  },
+  {
+    title: "Business Insurance",
+    description: "Tailored coverage for Goleta's growing businesses. From general liability to workers' comp, we protect your livelihood.",
+    href: "/business-insurance-goleta",
+    icon: "building" as const
+  }
+];
+
+const faqs = [
+  {
+    question: "Why should I choose a local Goleta insurance agent?",
+    answer: "A local agent understands the unique risks of living in the Goleta and Santa Barbara area, including wildfire zones, coastal flooding, and local traffic patterns. We can help you find coverage that addresses these specific concerns while potentially saving you money with regional discounts."
+  },
+  {
+    question: "How quickly can I get a quote?",
+    answer: "Most quotes can be provided within 24 hours. For simple auto or renters insurance, you may receive a quote within a few hours. Our local agents work quickly to get you the coverage you need."
+  },
+  {
+    question: "Do you offer discounts for UCSB students?",
+    answer: "Yes! We offer special rates for UCSB students on renters and auto insurance. Good student discounts, multi-policy bundles, and safe driver programs can help reduce your premiums significantly."
+  },
+  {
+    question: "What areas do you serve?",
+    answer: "We proudly serve Goleta, Santa Barbara, Isla Vista, Carpinteria, Montecito, and the surrounding Central Coast communities. Our agents are familiar with the specific insurance needs of each neighborhood."
+  },
+  {
+    question: "Can you help with claims?",
+    answer: "Absolutely. As your local insurance advocate, we guide you through the entire claims process. From filing the initial claim to negotiating with insurance companies, we're here to help you get the settlement you deserve."
+  }
+];
+---
+
+<BaseLayout
+  title="Bealer Insurance | Auto, Home & Renters Insurance in Goleta, CA"
+  description="Local insurance agency in Goleta, CA. Get competitive quotes on auto, home, renters, and business insurance. Serving Santa Barbara, Isla Vista & UCSB students."
+>
+  <Header slot="header" currentPath="/" />
+
+  <Hero
+    title="Local Insurance Coverage for Goleta & Santa Barbara"
+    subtitle="Get personalized quotes from trusted agents who understand your community. Auto, home, renters, and business insurance tailored to your needs."
+  />
+
+  <!-- Services Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Insurance Services for Every Need</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From protecting your car on Highway 101 to insuring your Goleta home against wildfires, we've got you covered.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Why Goleta Families Trust Bealer Insurance
+          </h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Local Expertise Since 1985</h3>
+                <p class="text-gray-600">Nearly 40 years of experience serving the Goleta and Santa Barbara community.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Multiple Carrier Options</h3>
+                <p class="text-gray-600">We compare rates from 20+ top insurance carriers to find you the best coverage and price.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Claims Advocacy</h3>
+                <p class="text-gray-600">When you need to file a claim, we're in your corner. Our agents help you navigate the process.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Community Focused</h3>
+                <p class="text-gray-600">We're your neighbors. Find us at local events and supporting Goleta causes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="bg-blue-600 rounded-2xl p-8 text-white">
+          <div class="grid grid-cols-2 gap-8">
+            <div class="text-center">
+              <div class="text-4xl font-bold mb-2">40+</div>
+              <div class="text-blue-200">Years in Business</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold mb-2">5,000+</div>
+              <div class="text-blue-200">Policies Written</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold mb-2">500+</div>
+              <div class="text-blue-200">5-Star Reviews</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold mb-2">20+</div>
+              <div class="text-blue-200">Insurance Partners</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <LeadForm />
+
+  <!-- FAQ Section -->
+  <FAQ faqs={faqs} />
+
+  <!-- Local Areas Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Serving the Central Coast</h2>
+        <p class="text-lg text-gray-600">Proud to protect families and businesses across these communities</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {["Goleta", "Santa Barbara", "Isla Vista", "Carpinteria", "Montecito", "Summerland", "Hope Ranch", "UCSB Campus"].map((area) => (
+          <div class="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
+            <span class="text-gray-900 font-medium">{area}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

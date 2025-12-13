@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import FAQ from '../components/FAQ.astro';
+
+const coverageTypes = [
+  {
+    title: "Dwelling Coverage",
+    description: "Protects the structure of your home against fire, windstorm, hail, lightning, and other covered perils."
+  },
+  {
+    title: "Personal Property",
+    description: "Covers your belongings inside the home - furniture, electronics, clothing, and more."
+  },
+  {
+    title: "Liability Protection",
+    description: "Covers legal expenses if someone is injured on your property or you accidentally damage their property."
+  },
+  {
+    title: "Additional Living Expenses",
+    description: "Pays for temporary housing and living costs if your home becomes uninhabitable after a covered loss."
+  },
+  {
+    title: "Wildfire Coverage",
+    description: "Critical protection for Goleta homes in high-risk fire zones. Includes evacuation expenses."
+  },
+  {
+    title: "Water Damage",
+    description: "Coverage for sudden water damage from burst pipes or appliances. Flood insurance available separately."
+  }
+];
+
+const faqs = [
+  {
+    question: "How much home insurance do I need in Goleta?",
+    answer: "Your dwelling coverage should be enough to rebuild your home completely (not the market value). In Goleta, average rebuild costs range from $300-500 per square foot depending on materials and finishes. We recommend getting a replacement cost estimate to ensure adequate coverage."
+  },
+  {
+    question: "Is wildfire coverage included in home insurance?",
+    answer: "Basic fire coverage is typically included, but Goleta homeowners may need additional wildfire-specific coverage. Some insurers are limiting coverage in high-risk areas like the foothills. We work with multiple carriers to find coverage for homes in all risk zones."
+  },
+  {
+    question: "Do I need earthquake insurance?",
+    answer: "Standard home insurance doesn't cover earthquake damage. Given Santa Barbara County's seismic activity, we strongly recommend adding earthquake coverage. California Earthquake Authority (CEA) policies are available through us."
+  },
+  {
+    question: "What discounts are available for Goleta homeowners?",
+    answer: "Common discounts include: bundling with auto insurance (up to 25%), security systems, fire-resistant roofing, updated electrical/plumbing, being claims-free, and newer homes. Many Goleta homes with Spanish tile roofs qualify for fire-resistant discounts."
+  },
+  {
+    question: "How do I file a home insurance claim?",
+    answer: "Contact us first - we'll help you document the damage and guide you through the process. Take photos, make temporary repairs to prevent further damage (keep receipts), and don't dispose of damaged items until the adjuster has seen them."
+  },
+  {
+    question: "What's the difference between actual cash value and replacement cost?",
+    answer: "Actual cash value pays the depreciated value of items. Replacement cost pays what it costs to replace items with new equivalents. We recommend replacement cost coverage for both dwelling and personal property to avoid out-of-pocket expenses after a loss."
+  }
+];
+---
+
+<BaseLayout
+  title="Home Insurance Goleta, CA | Homeowners Insurance Quotes | Bealer Insurance"
+  description="Protect your Goleta home with comprehensive homeowners insurance. Wildfire coverage, earthquake options, and competitive rates for Santa Barbara County homes."
+>
+  <Header slot="header" currentPath="/home-insurance-goleta" />
+
+  <Hero
+    title="Protect Your Goleta Home"
+    subtitle="Comprehensive coverage for coastal living, wildfire protection, and everything in between. Local agents who know Santa Barbara County."
+    ctaText="Get Your Home Quote"
+  />
+
+  <!-- Coverage Types -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Home Insurance Coverage Options</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Customize your policy to protect what matters most. From basic coverage to comprehensive protection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {coverageTypes.map((coverage) => (
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{coverage.title}</h3>
+            <p class="text-gray-600 text-sm">{coverage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Risks Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Home Insurance for Goleta's Unique Risks</h2>
+          <p class="text-blue-100 mb-6">
+            Living in the beautiful Goleta and Santa Barbara area comes with specific risks. Our local agents help you prepare for regional hazards while potentially saving money.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-orange-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+              </svg>
+              <span><strong>Wildfire Protection</strong> - Coverage for homes near foothills and brush areas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Earthquake Coverage</strong> - Optional CEA policies for seismic protection</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Mudslide & Debris Flow</strong> - Important after wildfires in hillside areas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span><strong>Coastal Considerations</strong> - Wind and salt air damage protection</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-6">Goleta Home Insurance Savings</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Bundle with Auto</span>
+              <span class="font-bold text-green-300">Up to 25% off</span>
+            </div>
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Fire-Resistant Roof</span>
+              <span class="font-bold text-green-300">Up to 15% off</span>
+            </div>
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Security System</span>
+              <span class="font-bold text-green-300">Up to 10% off</span>
+            </div>
+            <div class="flex justify-between items-center pb-4 border-b border-white/20">
+              <span>Claims-Free Discount</span>
+              <span class="font-bold text-green-300">Up to 20% off</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>New Home Discount</span>
+              <span class="font-bold text-green-300">Up to 15% off</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <LeadForm
+    insuranceType="home"
+    heading="Get Your Free Home Insurance Quote"
+    subheading="Protect your Goleta home with the right coverage"
+  />
+
+  <!-- FAQ Section -->
+  <FAQ title="Home Insurance FAQs" faqs={faqs} />
+
+  <!-- Related Services -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Complete Your Protection</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/auto-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Auto Insurance</h3>
+          <p class="text-gray-600 text-sm">Bundle with home for up to 25% savings on both policies.</p>
+        </a>
+        <a href="/renters-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Renters Insurance</h3>
+          <p class="text-gray-600 text-sm">Protect your rental property investment with landlord coverage.</p>
+        </a>
+        <a href="/business-insurance-goleta" class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-gray-900 mb-2">Home-Based Business</h3>
+          <p class="text-gray-600 text-sm">Additional coverage for businesses run from your Goleta home.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
