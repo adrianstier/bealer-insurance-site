@@ -14,6 +14,8 @@ const {
 } = Astro.props;
 
 import '../styles/global.css';
+import ExitIntentPopup from '../components/ExitIntentPopup.astro';
+import UrgencyBanner from '../components/UrgencyBanner.astro';
 ---
 
 <!doctype html>
@@ -74,11 +76,13 @@ import '../styles/global.css';
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
+    <UrgencyBanner />
     <slot name="header" />
     <main class="flex-1">
       <slot />
     </main>
     <slot name="footer" />
     <slot name="sticky-cta" />
+    <ExitIntentPopup />
   </body>
 </html>

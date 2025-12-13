@@ -44,23 +44,50 @@ const {
           {subtitle}
         </p>
 
-        <!-- CTA Buttons -->
+        <!-- Inline Quick Form - Higher Conversion -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/20">
+          <form id="hero-quick-form" class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              name="zipCode"
+              required
+              pattern="[0-9]{5}"
+              inputmode="numeric"
+              maxlength="5"
+              placeholder="Enter ZIP Code"
+              class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-orange-500 border-0"
+            />
+            <button
+              type="submit"
+              class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-lg hover:shadow-xl whitespace-nowrap flex items-center justify-center gap-2"
+            >
+              <span>See My Rates</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+          </form>
+          <p class="text-blue-200 text-xs mt-2 text-center sm:text-left">
+            <span class="inline-flex items-center gap-1">
+              <svg class="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+              Secure & confidential - takes 60 seconds
+            </span>
+          </p>
+        </div>
+
+        <!-- Secondary CTA -->
         <div class="flex flex-col sm:flex-row gap-4 mb-8">
           <a
             href={ctaLink}
-            class="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="inline-flex items-center justify-center bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-medium transition-all border border-white/30"
           >
-            {ctaText}
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            Or fill out detailed form below
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </a>
-          <div class="flex items-center gap-2 text-blue-200 text-sm">
-            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Takes less than 60 seconds</span>
-          </div>
         </div>
 
         <!-- Trust Badges -->
@@ -154,3 +181,41 @@ const {
     </div>
   </div>
 </section>
+
+<script>
+  const heroForm = document.getElementById('hero-quick-form') as HTMLFormElement;
+
+  heroForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(heroForm);
+    const zipCode = formData.get('zipCode');
+
+    // Store zip code for the main form
+    sessionStorage.setItem('userZipCode', zipCode as string);
+
+    // Scroll to main form and pre-fill
+    const mainForm = document.getElementById('quote-form');
+    if (mainForm) {
+      mainForm.scrollIntoView({ behavior: 'smooth' });
+
+      // Pre-fill the zip code in the main form
+      setTimeout(() => {
+        const zipInput = document.getElementById('zipCode') as HTMLInputElement;
+        if (zipInput) {
+          zipInput.value = zipCode as string;
+          // Focus on first name to continue the flow
+          const firstNameInput = document.getElementById('firstName') as HTMLInputElement;
+          firstNameInput?.focus();
+        }
+      }, 500);
+    }
+
+    // Track event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'hero_form_start', {
+        'event_category': 'engagement',
+        'event_label': zipCode
+      });
+    }
+  });
+</script>
