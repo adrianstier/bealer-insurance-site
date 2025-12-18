@@ -4,7 +4,12 @@ interface Props {
   message?: string;
 }
 
-const { message = "December Special: Lock in 2024 rates before year-end increases!" } = Astro.props;
+// Dynamic month and year for evergreen urgency messaging
+const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
+const currentYear = new Date().getFullYear();
+const nextYear = currentYear + 1;
+
+const { message = `${currentMonth} Special: Lock in ${currentYear} rates before ${nextYear} increases!` } = Astro.props;
 ---
 
 <div class="bg-gradient-to-r from-red-600 to-orange-500 text-white py-2 px-4 text-center text-sm font-medium">

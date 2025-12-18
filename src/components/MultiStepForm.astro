@@ -50,7 +50,11 @@ const { insuranceType = "" } = Astro.props;
                   class="w-full px-5 py-4 text-xl text-center border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="93117"
                   autocomplete="postal-code"
+                  aria-describedby="zip-error"
                 />
+                <p id="zip-error" class="text-red-600 text-sm mt-2 hidden" role="alert">
+                  Please enter a valid 5-digit ZIP code
+                </p>
               </div>
 
               <button
@@ -82,11 +86,18 @@ const { insuranceType = "" } = Astro.props;
               <p class="text-gray-600">Select all that apply to get bundled savings</p>
             </div>
 
+            <p id="insurance-type-error" class="text-red-600 text-sm mb-3 hidden" role="alert">
+              Please select at least one insurance type
+            </p>
             <div class="grid grid-cols-2 gap-3 mb-6">
               <label class="insurance-option cursor-pointer">
                 <input type="checkbox" name="insuranceTypes" value="auto" class="sr-only peer" />
                 <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
-                  <div class="text-3xl mb-2">🚗</div>
+                  <div class="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                    </svg>
+                  </div>
                   <div class="font-semibold text-gray-900">Auto</div>
                   <div class="text-xs text-gray-500">Car, Truck, SUV</div>
                 </div>
@@ -95,7 +106,11 @@ const { insuranceType = "" } = Astro.props;
               <label class="insurance-option cursor-pointer">
                 <input type="checkbox" name="insuranceTypes" value="home" class="sr-only peer" />
                 <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
-                  <div class="text-3xl mb-2">🏠</div>
+                  <div class="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  </div>
                   <div class="font-semibold text-gray-900">Home</div>
                   <div class="text-xs text-gray-500">Homeowners</div>
                 </div>
@@ -104,7 +119,11 @@ const { insuranceType = "" } = Astro.props;
               <label class="insurance-option cursor-pointer">
                 <input type="checkbox" name="insuranceTypes" value="renters" class="sr-only peer" />
                 <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
-                  <div class="text-3xl mb-2">🔑</div>
+                  <div class="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                    </svg>
+                  </div>
                   <div class="font-semibold text-gray-900">Renters</div>
                   <div class="text-xs text-gray-500">Apartments</div>
                 </div>
@@ -113,7 +132,11 @@ const { insuranceType = "" } = Astro.props;
               <label class="insurance-option cursor-pointer">
                 <input type="checkbox" name="insuranceTypes" value="life" class="sr-only peer" />
                 <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
-                  <div class="text-3xl mb-2">❤️</div>
+                  <div class="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </div>
                   <div class="font-semibold text-gray-900">Life</div>
                   <div class="text-xs text-gray-500">Term & Whole</div>
                 </div>
@@ -122,7 +145,11 @@ const { insuranceType = "" } = Astro.props;
               <label class="insurance-option cursor-pointer">
                 <input type="checkbox" name="insuranceTypes" value="business" class="sr-only peer" />
                 <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
-                  <div class="text-3xl mb-2">🏢</div>
+                  <div class="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
                   <div class="font-semibold text-gray-900">Business</div>
                   <div class="text-xs text-gray-500">Commercial</div>
                 </div>
@@ -131,7 +158,11 @@ const { insuranceType = "" } = Astro.props;
               <label class="insurance-option cursor-pointer">
                 <input type="checkbox" name="insuranceTypes" value="other" class="sr-only peer" />
                 <div class="p-4 border-2 border-gray-200 rounded-xl text-center transition-all peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-gray-300">
-                  <div class="text-3xl mb-2">📦</div>
+                  <div class="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
                   <div class="font-semibold text-gray-900">Other</div>
                   <div class="text-xs text-gray-500">Boat, RV, etc.</div>
                 </div>
@@ -246,6 +277,16 @@ const { insuranceType = "" } = Astro.props;
               <p class="text-gray-600">Your personalized rates are ready</p>
             </div>
 
+            <!-- Inline error for contact info -->
+            <div id="contact-error" class="bg-red-50 border border-red-200 rounded-lg p-3 mb-4 hidden" role="alert">
+              <p class="text-red-700 text-sm font-medium">Please fill in your name and phone number</p>
+            </div>
+
+            <!-- Submission error -->
+            <div id="submit-error" class="bg-red-50 border border-red-200 rounded-lg p-3 mb-4 hidden" role="alert">
+              <p class="text-red-700 text-sm font-medium">Something went wrong. Please try again.</p>
+            </div>
+
             <div class="space-y-4 mb-6">
               <div>
                 <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">
@@ -259,6 +300,7 @@ const { insuranceType = "" } = Astro.props;
                   autocomplete="name"
                   class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all capitalize"
                   placeholder="John Smith"
+                  aria-describedby="contact-error"
                 />
               </div>
 
@@ -275,6 +317,7 @@ const { insuranceType = "" } = Astro.props;
                   inputmode="tel"
                   class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="(805) 555-0123"
+                  aria-describedby="contact-error"
                 />
                 <p class="text-xs text-gray-400 mt-1">We'll call or text with your personalized quote</p>
               </div>
@@ -484,13 +527,25 @@ const { insuranceType = "" } = Astro.props;
     }
   }
 
+  function showError(elementId: string, show: boolean) {
+    const errorEl = document.getElementById(elementId);
+    if (errorEl) {
+      errorEl.classList.toggle('hidden', !show);
+    }
+  }
+
   function validateStep(step: number): boolean {
     if (step === 1) {
-      const zip = (document.getElementById('zipCode') as HTMLInputElement)?.value;
+      const zipInput = document.getElementById('zipCode') as HTMLInputElement;
+      const zip = zipInput?.value;
       if (!zip || zip.length !== 5) {
-        alert('Please enter a valid 5-digit ZIP code');
+        showError('zip-error', true);
+        zipInput?.classList.add('border-red-500');
+        zipInput?.focus();
         return false;
       }
+      showError('zip-error', false);
+      zipInput?.classList.remove('border-red-500');
       formData.zipCode = zip;
       sessionStorage.setItem('userZipCode', zip);
     }
@@ -498,9 +553,10 @@ const { insuranceType = "" } = Astro.props;
     if (step === 2) {
       const checked = document.querySelectorAll('input[name="insuranceTypes"]:checked');
       if (checked.length === 0) {
-        alert('Please select at least one insurance type');
+        showError('insurance-type-error', true);
         return false;
       }
+      showError('insurance-type-error', false);
       formData.insuranceTypes = Array.from(checked).map((el: any) => el.value);
     }
 
@@ -548,9 +604,12 @@ const { insuranceType = "" } = Astro.props;
     const email = (document.getElementById('email') as HTMLInputElement)?.value;
 
     if (!fullName || !phone) {
-      alert('Please fill in your name and phone number');
+      showError('contact-error', true);
+      showError('submit-error', false);
+      (document.getElementById('fullName') as HTMLInputElement)?.focus();
       return;
     }
+    showError('contact-error', false);
 
     // Split name
     const nameParts = fullName.trim().split(' ');
@@ -604,7 +663,7 @@ const { insuranceType = "" } = Astro.props;
 
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('Something went wrong. Please try again.');
+      showError('submit-error', true);
       submitBtn.disabled = false;
       if (submitText) submitText.textContent = 'Get My Free Quote';
     }
