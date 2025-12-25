@@ -16,8 +16,8 @@ const {
 const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
 ---
 
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden">
-  <!-- Background Image -->
+<section class="hero-section relative overflow-hidden">
+  <!-- Background Image with Sophisticated Overlay -->
   <div class="absolute inset-0">
     <Image
       src={santabarbaraHero}
@@ -26,35 +26,50 @@ const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
       loading="eager"
       fetchpriority="high"
     />
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-700/80"></div>
+    <!-- Multi-layer gradient for depth -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-900)]/95 via-[var(--color-primary-800)]/88 to-[var(--color-primary-700)]/82"></div>
+    <!-- Subtle warm overlay for California feel -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-accent-500)]/10 via-transparent to-transparent"></div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Floating orbs -->
+    <div class="absolute top-20 left-[10%] w-64 h-64 rounded-full bg-[var(--color-accent-500)]/10 blur-3xl animate-float"></div>
+    <div class="absolute bottom-20 right-[15%] w-96 h-96 rounded-full bg-[var(--color-primary-400)]/10 blur-3xl animate-float" style="animation-delay: -2s;"></div>
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
       <!-- Left Column - Value Proposition -->
       <div class="text-center lg:text-left">
-        <!-- Urgency Badge -->
-        <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/30 rounded-full px-4 py-2 mb-6">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+        <!-- Urgency Badge - Refined -->
+        <div class="animate-fade-in-up inline-flex items-center gap-2.5 bg-[var(--color-success-500)]/15 border border-[var(--color-success-400)]/25 rounded-full px-5 py-2.5 mb-8 backdrop-blur-sm">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-success-400)] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-success-400)]"></span>
           </span>
-          <span class="text-sm font-medium text-green-300">{currentMonth} rates available — compare today</span>
+          <span class="text-sm font-medium text-[var(--color-success-300)] tracking-wide">{currentMonth} rates available — compare today</span>
         </div>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <!-- Headline with Serif Display Font -->
+        <h1 class="animate-fade-in-up animate-stagger-1 text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-6xl font-semibold leading-[1.1] mb-6 text-white" style="font-family: var(--font-display);">
           {title}
         </h1>
-        <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-xl mx-auto lg:mx-0">
+
+        <!-- Subheadline -->
+        <p class="animate-fade-in-up animate-stagger-2 text-lg md:text-xl text-[var(--color-primary-200)] mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
           {subtitle}
         </p>
 
-        <!-- Giant ZIP Input - The Single CTA -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 max-w-md mx-auto lg:mx-0 mb-8">
-          <form id="hero-zip-form" class="space-y-4">
+        <!-- Quote Form Card - Glass Morphism -->
+        <div class="animate-fade-in-up animate-stagger-3 glass-dark rounded-2xl p-6 md:p-8 max-w-md mx-auto lg:mx-0 mb-10 shadow-2xl">
+          <form id="hero-zip-form" class="space-y-5">
             <div>
-              <label for="hero-zip" class="block text-sm font-medium text-blue-100 mb-2 text-left">
+              <label for="hero-zip" class="block text-sm font-medium text-[var(--color-primary-200)] mb-3 text-left tracking-wide">
                 Enter your ZIP to start comparing rates
               </label>
               <input
@@ -66,148 +81,156 @@ const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
                 inputmode="numeric"
                 maxlength="5"
                 placeholder="Enter ZIP Code"
-                class="w-full px-5 py-4 text-xl text-center text-gray-900 placeholder-gray-400 rounded-xl border-0 focus:ring-4 focus:ring-orange-400 transition-all"
+                class="w-full px-5 py-4 text-lg text-center font-medium text-[var(--color-warm-800)] placeholder-[var(--color-warm-400)] rounded-xl border-2 border-transparent bg-white focus:border-[var(--color-accent-400)] focus:ring-4 focus:ring-[var(--color-accent-400)]/20 transition-all duration-300 shadow-lg"
               />
             </div>
             <button
               type="submit"
-              class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
+              class="btn-primary w-full py-4 text-lg animate-pulse-glow"
             >
-              <span>Start My Quote</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <span>Start My Free Quote</span>
+              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </button>
           </form>
-          <p class="text-blue-200 text-xs mt-3 flex items-center justify-center gap-1">
-            <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+          <p class="text-[var(--color-primary-300)] text-sm mt-4 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
             </svg>
-            100% secure. No spam. Takes 2 minutes.
+            <span>100% secure &bull; No spam &bull; Takes 2 minutes</span>
           </p>
         </div>
 
         <!-- Trust Signals Row -->
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm text-blue-200">
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>20+ Carriers</span>
+        <div class="animate-fade-in-up animate-stagger-4 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4">
+          <div class="flex items-center gap-2.5 text-sm text-[var(--color-primary-200)]">
+            <div class="w-6 h-6 rounded-full bg-[var(--color-success-500)]/20 flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <span class="font-medium">20+ Carriers</span>
           </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Licensed CA Agents</span>
+          <div class="flex items-center gap-2.5 text-sm text-[var(--color-primary-200)]">
+            <div class="w-6 h-6 rounded-full bg-[var(--color-success-500)]/20 flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <span class="font-medium">Licensed CA Agents</span>
           </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>No Obligation</span>
+          <div class="flex items-center gap-2.5 text-sm text-[var(--color-primary-200)]">
+            <div class="w-6 h-6 rounded-full bg-[var(--color-success-500)]/20 flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <span class="font-medium">No Obligation</span>
           </div>
         </div>
       </div>
 
-      <!-- Right Column - Social Proof & Recent Savings -->
-      <div class="hidden lg:block">
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-          <!-- Recent Savings Ticker -->
-          <div class="text-center mb-6">
-            <p class="text-blue-200 text-sm uppercase tracking-wide mb-2">Recent Savings in Your Area</p>
-            <div class="text-4xl font-bold text-white">$547<span class="text-xl text-blue-200">/year avg.</span></div>
+      <!-- Right Column - Social Proof Panel -->
+      <div class="hidden lg:block animate-slide-in-right">
+        <div class="glass-dark rounded-3xl p-8 shadow-2xl border border-white/10">
+          <!-- Savings Highlight -->
+          <div class="text-center mb-8 pb-8 border-b border-white/10">
+            <p class="text-[var(--color-primary-300)] text-sm uppercase tracking-widest mb-3 font-medium">Recent Savings in Your Area</p>
+            <div class="flex items-baseline justify-center gap-2">
+              <span class="text-5xl font-bold text-white" style="font-family: var(--font-display);">$547</span>
+              <span class="text-xl text-[var(--color-primary-300)]">/year avg.</span>
+            </div>
           </div>
 
           <!-- Live Activity Feed -->
-          <div class="space-y-3 mb-6">
-            <div class="bg-white/10 rounded-lg p-4 flex items-center gap-3 animate-fade-in">
-              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+          <div class="space-y-4 mb-8">
+            <div class="activity-item bg-white/5 hover:bg-white/10 rounded-xl p-4 flex items-center gap-4 transition-all duration-300 cursor-default group">
+              <div class="w-11 h-11 bg-[var(--color-success-500)]/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <div class="flex-1">
-                <div class="text-white font-medium">Maria S. • Goleta</div>
-                <div class="text-green-400 text-sm font-semibold">Saved $720/yr on auto</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-white font-medium">Maria S. &bull; Goleta</div>
+                <div class="text-[var(--color-success-400)] text-sm font-semibold">Saved $720/yr on auto</div>
               </div>
-              <div class="text-blue-300 text-xs">2 hrs ago</div>
+              <div class="text-[var(--color-primary-400)] text-xs font-medium">2 hrs ago</div>
             </div>
 
-            <div class="bg-white/10 rounded-lg p-4 flex items-center gap-3">
-              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <div class="activity-item bg-white/5 hover:bg-white/10 rounded-xl p-4 flex items-center gap-4 transition-all duration-300 cursor-default group">
+              <div class="w-11 h-11 bg-[var(--color-success-500)]/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <div class="flex-1">
-                <div class="text-white font-medium">Kevin T. • Santa Barbara</div>
-                <div class="text-green-400 text-sm font-semibold">Saved $1,200/yr on bundle</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-white font-medium">Kevin T. &bull; Santa Barbara</div>
+                <div class="text-[var(--color-success-400)] text-sm font-semibold">Saved $1,200/yr on bundle</div>
               </div>
-              <div class="text-blue-300 text-xs">5 hrs ago</div>
+              <div class="text-[var(--color-primary-400)] text-xs font-medium">5 hrs ago</div>
             </div>
 
-            <div class="bg-white/10 rounded-lg p-4 flex items-center gap-3">
-              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <div class="activity-item bg-white/5 hover:bg-white/10 rounded-xl p-4 flex items-center gap-4 transition-all duration-300 cursor-default group">
+              <div class="w-11 h-11 bg-[var(--color-success-500)]/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5 text-[var(--color-success-400)]" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <div class="flex-1">
-                <div class="text-white font-medium">UCSB Student • Isla Vista</div>
-                <div class="text-green-400 text-sm font-semibold">Found renters for $12/mo</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-white font-medium">UCSB Student &bull; Isla Vista</div>
+                <div class="text-[var(--color-success-400)] text-sm font-semibold">Found renters for $12/mo</div>
               </div>
-              <div class="text-blue-300 text-xs">Today</div>
+              <div class="text-[var(--color-primary-400)] text-xs font-medium">Today</div>
             </div>
           </div>
 
           <!-- Star Rating -->
-          <div class="text-center pt-4 border-t border-white/10">
-            <div class="flex items-center justify-center gap-1 text-yellow-400 mb-1">
+          <div class="text-center pt-6 border-t border-white/10">
+            <div class="flex items-center justify-center gap-1.5 mb-2">
               {[1,2,3,4,5].map(() => (
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               ))}
             </div>
-            <div class="text-blue-200 text-sm">4.9/5 from 500+ reviews</div>
+            <div class="text-[var(--color-primary-200)] text-sm font-medium">4.9/5 from 500+ reviews</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Social Proof (visible on small screens) -->
-    <div class="lg:hidden mt-8 flex items-center justify-center gap-4 bg-white/10 rounded-xl p-4">
-      <div class="text-center">
-        <div class="text-2xl font-bold text-white">$547</div>
-        <div class="text-xs text-blue-200">Avg. savings</div>
-      </div>
-      <div class="w-px h-10 bg-white/20"></div>
-      <div class="text-center">
-        <div class="text-2xl font-bold text-white">20+</div>
-        <div class="text-xs text-blue-200">Carriers</div>
-      </div>
-      <div class="w-px h-10 bg-white/20"></div>
-      <div class="text-center">
-        <div class="flex items-center justify-center gap-0.5 text-yellow-400">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-          <span class="text-white font-bold">4.9</span>
+    <!-- Mobile Social Proof Strip -->
+    <div class="lg:hidden mt-10 animate-fade-in-up animate-stagger-5">
+      <div class="glass-dark rounded-2xl p-5 flex items-center justify-around">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-white" style="font-family: var(--font-display);">$547</div>
+          <div class="text-xs text-[var(--color-primary-300)] mt-0.5">Avg. savings</div>
         </div>
-        <div class="text-xs text-blue-200">Rating</div>
+        <div class="w-px h-12 bg-white/15"></div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-white" style="font-family: var(--font-display);">20+</div>
+          <div class="text-xs text-[var(--color-primary-300)] mt-0.5">Carriers</div>
+        </div>
+        <div class="w-px h-12 bg-white/15"></div>
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-1 text-amber-400 mb-0.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <span class="text-white font-bold text-lg">4.9</span>
+          </div>
+          <div class="text-xs text-[var(--color-primary-300)]">Rating</div>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<style>
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out;
-  }
-</style>
+  <!-- Bottom Wave Decoration -->
+  <div class="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none">
+    <svg class="w-full h-16 md:h-24" viewBox="0 0 1440 74" fill="none" preserveAspectRatio="none">
+      <path d="M0 24C240 64 480 74 720 54C960 34 1200 44 1440 74V74H0V24Z" fill="var(--color-warm-50)"/>
+    </svg>
+  </div>
+</section>
 
 <script>
   const heroForm = document.getElementById('hero-zip-form') as HTMLFormElement;

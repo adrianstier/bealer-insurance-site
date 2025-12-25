@@ -87,16 +87,29 @@ const faqs = [
   <MultiStepForm />
 
   <!-- Services Section -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">What Do You Need to Protect?</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Whether it's your car, home, or family — we'll find you the best rate.
+  <section class="py-20 md:py-24 bg-white relative">
+    <!-- Subtle background pattern -->
+    <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: radial-gradient(var(--color-warm-400) 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 badge-accent mb-4">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <span>Full Coverage Options</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-warm-900)] mb-4" style="font-family: var(--font-display);">
+          What Do You Need to Protect?
+        </h2>
+        <p class="text-lg text-[var(--color-warm-600)] max-w-2xl mx-auto">
+          Whether it's your car, home, or family — we'll find you the best rate from our network of trusted carriers.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Service Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {services.map((service) => (
           <ServiceCard {...service} />
         ))}
@@ -105,61 +118,101 @@ const faqs = [
   </section>
 
   <!-- Why Compare Through Us -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+  <section class="py-20 md:py-24 bg-[var(--color-warm-50)] relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[var(--color-primary-100)]/40 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[var(--color-accent-100)]/30 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/4"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 badge-success mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>The Smart Choice</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-warm-900)] mb-4" style="font-family: var(--font-display);">
           Why Compare Rates Here?
         </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Unlike going to one carrier, we shop 20+ companies to find your lowest rate.
+        <p class="text-lg text-[var(--color-warm-600)] max-w-2xl mx-auto">
+          Unlike going to one carrier, we shop 20+ companies to find your lowest rate — saving you time and money.
         </p>
       </div>
 
+      <!-- Benefits Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-          <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <!-- Benefit 1 -->
+        <div class="group bg-white rounded-2xl p-8 shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-xl)] border border-[var(--color-warm-100)] transition-all duration-500 text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-success-50)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-16 h-16 bg-[var(--color-success-100)] group-hover:bg-[var(--color-success-500)] rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <svg class="w-8 h-8 text-[var(--color-success-600)] group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-[var(--color-warm-900)] mb-3" style="font-family: var(--font-display);">Save $547/Year Average</h3>
+            <p class="text-[var(--color-warm-600)] leading-relaxed">Our customers save an average of $547 per year by comparing multiple carriers instead of sticking with one.</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Save $547/Year Average</h3>
-          <p class="text-gray-600">Our customers save an average of $547 per year by comparing multiple carriers instead of sticking with one.</p>
         </div>
 
-        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <!-- Benefit 2 -->
+        <div class="group bg-white rounded-2xl p-8 shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-xl)] border border-[var(--color-warm-100)] transition-all duration-500 text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-50)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-16 h-16 bg-[var(--color-primary-100)] group-hover:bg-[var(--color-primary-600)] rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <svg class="w-8 h-8 text-[var(--color-primary-600)] group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-[var(--color-warm-900)] mb-3" style="font-family: var(--font-display);">Quote in 2 Minutes</h3>
+            <p class="text-[var(--color-warm-600)] leading-relaxed">Our simple form takes just 2 minutes. No long applications, no paperwork. Get your personalized rate fast.</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Quote in 2 Minutes</h3>
-          <p class="text-gray-600">Our simple form takes just 2 minutes. No long applications, no paperwork. Get your personalized rate fast.</p>
         </div>
 
-        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-          <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
+        <!-- Benefit 3 -->
+        <div class="group bg-white rounded-2xl p-8 shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-xl)] border border-[var(--color-warm-100)] transition-all duration-500 text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-accent-50)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-16 h-16 bg-[var(--color-accent-100)] group-hover:bg-[var(--color-accent-500)] rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+              <svg class="w-8 h-8 text-[var(--color-accent-600)] group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-[var(--color-warm-900)] mb-3" style="font-family: var(--font-display);">Real Local Agents</h3>
+            <p class="text-[var(--color-warm-600)] leading-relaxed">Talk to a licensed California agent who knows Santa Barbara County — not a robot or out-of-state call center.</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Real Local Agents</h3>
-          <p class="text-gray-600">Talk to a licensed California agent who knows Santa Barbara County — not a robot or out-of-state call center.</p>
         </div>
       </div>
 
       <!-- CTA -->
-      <div class="text-center mt-10">
-        <a
-          href="#quote-form"
-          class="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-        >
+      <div class="text-center mt-14">
+        <a href="#quote-form" class="btn-primary py-4 px-8 text-base">
           <span>Compare My Rates Now</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </a>
-        <p class="text-sm text-gray-500 mt-3">Free • No obligation • Takes 2 minutes</p>
+        <p class="text-sm text-[var(--color-warm-500)] mt-4 flex items-center justify-center gap-3">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[var(--color-success-500)]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Free
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[var(--color-success-500)]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            No obligation
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[var(--color-success-500)]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Takes 2 minutes
+          </span>
+        </p>
       </div>
     </div>
   </section>
@@ -171,16 +224,16 @@ const faqs = [
   <FAQ faqs={faqs} />
 
   <!-- Local Areas Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-16 md:py-20 bg-[var(--color-warm-50)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">Serving the 805</h2>
-        <p class="text-gray-600">Connecting you with agents across Santa Barbara County</p>
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-warm-900)] mb-3" style="font-family: var(--font-display);">Serving the 805</h2>
+        <p class="text-[var(--color-warm-600)]">Connecting you with agents across Santa Barbara County and beyond</p>
       </div>
 
       <div class="flex flex-wrap justify-center gap-3">
         {["Goleta", "Santa Barbara", "Isla Vista", "Carpinteria", "Montecito", "Summerland", "Hope Ranch", "UCSB"].map((area) => (
-          <span class="bg-white rounded-full px-4 py-2 text-sm font-medium text-gray-700 shadow-sm border border-gray-100">
+          <span class="bg-white rounded-full px-5 py-2.5 text-sm font-medium text-[var(--color-warm-700)] shadow-[var(--shadow-sm)] border border-[var(--color-warm-100)] hover:border-[var(--color-primary-200)] hover:shadow-[var(--shadow-md)] transition-all duration-300 cursor-default">
             {area}
           </span>
         ))}
@@ -189,27 +242,41 @@ const faqs = [
   </section>
 
   <!-- Final CTA Section -->
-  <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+  <section class="py-20 md:py-24 bg-gradient-to-br from-[var(--color-primary-800)] via-[var(--color-primary-700)] to-[var(--color-primary-800)] text-white relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-accent-500)]/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-[var(--color-primary-400)]/15 rounded-full blur-3xl"></div>
+      <!-- Grid pattern -->
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-2 mb-8 backdrop-blur-sm">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-success-400)] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-success-400)]"></span>
+        </span>
+        <span class="text-sm font-medium text-white/90">Join 2,847+ happy customers</span>
+      </div>
+
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 leading-tight" style="font-family: var(--font-display);">
         Ready to Stop Overpaying?
       </h2>
-      <p class="text-xl text-blue-100 mb-8">
-        Join hundreds of Santa Barbara County residents who've found better rates.
+      <p class="text-xl text-[var(--color-primary-200)] mb-10 max-w-2xl mx-auto">
+        Join hundreds of Santa Barbara County residents who've found better rates and better coverage.
       </p>
+
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="#quote-form"
-          class="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-lg"
-        >
+        <a href="#quote-form" class="btn-primary py-4 px-8 text-lg">
           <span>Get My Free Quote</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </a>
         <a
           href="tel:+18058457005"
-          class="inline-flex items-center justify-center gap-2 bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all border border-white/30"
+          class="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 border border-white/20 hover:border-white/30 backdrop-blur-sm"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -217,6 +284,10 @@ const faqs = [
           <span>Call (805) 845-7005</span>
         </a>
       </div>
+
+      <p class="text-sm text-[var(--color-primary-300)] mt-8">
+        Average savings of $547/year &bull; Free comparison &bull; No obligation
+      </p>
     </div>
   </section>
 
